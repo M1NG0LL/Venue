@@ -3,9 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Venue.Application;
-using Venue.Infrastructure.DbContext;
 using Venue.Domain.Interfaces;
+using Venue.Infrastructure.DbContext;
 using Venue.Infrastructure.Repositories;
+using Venue.Infrastructure.Seeder;
+using Venue.Infrastructure.Seeder.Users;
 
 namespace Venue.Infrastructure
 {
@@ -28,6 +30,11 @@ namespace Venue.Infrastructure
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            #endregion
+
+            #region Database Seeders
+            services.AddScoped<DataBaseUsersSeeder>();
+            services.AddScoped<DataBaseSeeder>();
             #endregion
 
             return services.AddApplication();

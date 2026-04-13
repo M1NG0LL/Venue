@@ -35,5 +35,16 @@
                 Errors = null,
                 Data = data
             };
+
+        public static new ResponseBase<T> Failure(string message, List<string>? errors = null)
+        {
+            return new ResponseBase<T>()
+            {
+                IsSuccess = false,
+                Message = message,
+                Errors = errors,
+                Data = default
+            };
+        }
     }
 }
