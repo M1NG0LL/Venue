@@ -59,7 +59,7 @@ namespace Venue.Infrastructure.Seeder.Users
 
         private async Task SeedUsersAsync()
         {
-            var adminEmail = "DoNotReply@wscdev.net";
+            var adminEmail = "admin@venue.com";
             var adminUser = await _userManager.FindByEmailAsync(adminEmail);
 
             if (adminUser == null)
@@ -71,7 +71,7 @@ namespace Venue.Infrastructure.Seeder.Users
                     EmailConfirmed = true,
                 };
 
-                var result = await _userManager.CreateAsync(adminUser, "1q2w3E*@");
+                var result = await _userManager.CreateAsync(adminUser, "admin@venue.com");
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(adminUser, UserRole.Admin.ToString());

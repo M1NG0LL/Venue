@@ -1,0 +1,678 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --rose:#b76e79;--rose-light:#f7e8ea;--rose-mid:#e8b4bb;--rose-dark:#7a3d45;
+    --gold:#c9a84c;--gold-light:#faf3e0;--cream:#fdf8f3;--text:#2c1f22;--muted:#7a6a6d;
+    --border:#e8ddd9;--white:#ffffff;--sidebar-w:210px;--radius:10px;
+  }
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);font-size:14px}
+  .app{display:flex;height:100vh;min-height:600px;overflow:hidden}
+  .sidebar{width:var(--sidebar-w);background:#2c1f22;display:flex;flex-direction:column;flex-shrink:0}
+  .sidebar-brand{padding:22px 18px 16px;border-bottom:1px solid #3e2d30}
+  .sidebar-brand h1{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#fdf8f3;line-height:1.2}
+  .sidebar-brand span{font-size:10px;color:#c9a84c;letter-spacing:2px;text-transform:uppercase;display:block;margin-top:2px}
+  .sidebar-nav{flex:1;padding:12px 0;overflow-y:auto}
+  .nav-section{padding:8px 18px 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#7a6a6d}
+  .nav-item{display:flex;align-items:center;gap:10px;padding:9px 18px;cursor:pointer;transition:background .15s;color:#c8b8bb;font-size:13px}
+  .nav-item:hover{background:#3e2d30;color:#fdf8f3}
+  .nav-item.active{background:#b76e79;color:#fff}
+  .nav-icon{width:16px;height:16px;opacity:.85}
+  .sidebar-user{padding:14px 18px;border-top:1px solid #3e2d30;cursor:pointer;transition:background .15s}
+  .sidebar-user:hover{background:#3e2d30}
+  .sidebar-user .u-row{display:flex;align-items:center;gap:10px}
+  .avatar{width:32px;height:32px;border-radius:50%;background:var(--rose);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:#fff;flex-shrink:0}
+  .u-name{font-size:13px;color:#fdf8f3;font-weight:500}
+  .u-role{font-size:11px;color:#7a6a6d}
+  .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+  .topbar{background:var(--white);border-bottom:1px solid var(--border);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+  .page-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600}
+  .topbar-actions{display:flex;align-items:center;gap:10px}
+  .btn{padding:7px 16px;border-radius:var(--radius);border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;transition:all .15s}
+  .btn-primary{background:var(--rose);color:#fff}.btn-primary:hover{background:var(--rose-dark)}
+  .btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}.btn-outline:hover{border-color:var(--rose);color:var(--rose)}
+  .btn-ghost{background:transparent;border:none;color:var(--muted);padding:6px 10px}.btn-ghost:hover{color:var(--rose)}
+  .btn-danger{background:#e24b4a;color:#fff}.btn-danger:hover{background:#a32d2d}
+  .btn-sm{padding:5px 12px;font-size:12px}
+  .content{flex:1;overflow-y:auto;padding:24px}
+  .screen{display:none}
+  .screen.active{display:block}
+  .card{background:var(--white);border-radius:var(--radius);border:0.5px solid var(--border);padding:20px}
+  .card-lg{padding:24px}
+  .input-group{margin-bottom:16px}
+  .input-group label{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:5px;letter-spacing:.5px;text-transform:uppercase}
+  .input-group input,.input-group select,.input-group textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);background:var(--cream);transition:border .15s;outline:none}
+  .input-group input:focus,.input-group select:focus,.input-group textarea:focus{border-color:var(--rose);background:#fff}
+  .input-group textarea{resize:vertical;min-height:80px}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .stat-card{background:var(--white);border-radius:var(--radius);border:0.5px solid var(--border);padding:16px}
+  .stat-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+  .stat-val{font-size:26px;font-weight:500;font-family:'Cormorant Garamond',serif;margin-top:4px}
+  .stat-sub{font-size:11px;color:var(--muted);margin-top:2px}
+  .venue-card{background:var(--white);border-radius:12px;border:0.5px solid var(--border);overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s}
+  .venue-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(44,31,34,.1)}
+  .venue-img{height:140px;overflow:hidden;position:relative}
+  .venue-img-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:40px}
+  .venue-body{padding:14px}
+  .venue-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;margin-bottom:4px}
+  .venue-loc{font-size:12px;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:4px}
+  .venue-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+  .tag{background:var(--rose-light);color:var(--rose-dark);font-size:11px;padding:2px 8px;border-radius:20px}
+  .tag-gold{background:var(--gold-light);color:#7a5c10}
+  .venue-footer{display:flex;align-items:center;justify-content:space-between;border-top:0.5px solid var(--border);padding-top:10px;margin-top:4px}
+  .price{font-size:15px;font-weight:500;color:var(--rose)}
+  .cap{font-size:11px;color:var(--muted)}
+  .badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500}
+  .badge-active{background:#eaf3de;color:#3b6d11}
+  .badge-pending{background:#faeeda;color:#854f0b}
+  .badge-inactive{background:#f1efe8;color:#5f5e5a}
+  .badge-admin{background:#eeedfe;color:#533ab7}
+  .badge-owner{background:var(--rose-light);color:var(--rose-dark)}
+  table{width:100%;border-collapse:collapse}
+  th{text-align:left;font-size:11px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;padding:10px 12px;border-bottom:1px solid var(--border)}
+  td{padding:11px 12px;border-bottom:0.5px solid var(--border);font-size:13px;vertical-align:middle}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:#fdf8f3}
+  .actions{display:flex;gap:6px}
+  .auth-wrap{min-height:100vh;background:var(--cream);display:flex;align-items:center;justify-content:center;padding:24px}
+  .auth-card{background:var(--white);border-radius:16px;border:0.5px solid var(--border);padding:40px;width:100%;max-width:420px}
+  .auth-logo{text-align:center;margin-bottom:28px}
+  .auth-logo h1{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--rose-dark)}
+  .auth-logo p{font-size:12px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+  .auth-title{font-size:16px;font-weight:500;margin-bottom:20px;text-align:center;color:var(--text)}
+  .auth-switch{text-align:center;margin-top:16px;font-size:13px;color:var(--muted)}
+  .auth-switch a{color:var(--rose);cursor:pointer;text-decoration:none}
+  .search-bar{display:flex;gap:10px;margin-bottom:20px}
+  .search-bar input{flex:1;padding:9px 14px;border:1px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;background:var(--white);outline:none}
+  .search-bar input:focus{border-color:var(--rose)}
+  .filter-row{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+  .filter-chip{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--white);font-size:12px;cursor:pointer;transition:all .15s;color:var(--muted)}
+  .filter-chip:hover,.filter-chip.active{background:var(--rose);border-color:var(--rose);color:#fff}
+  .modal-overlay{position:absolute;inset:0;background:rgba(44,31,34,.45);display:flex;align-items:center;justify-content:center;z-index:50;min-height:400px}
+  .modal{background:var(--white);border-radius:14px;border:0.5px solid var(--border);padding:28px;width:100%;max-width:500px;max-height:80vh;overflow-y:auto}
+  .modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+  .modal-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600}
+  .divider{height:1px;background:var(--border);margin:20px 0}
+  .profile-header{display:flex;align-items:center;gap:20px;margin-bottom:24px}
+  .profile-avatar{width:72px;height:72px;border-radius:50%;background:var(--rose);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:500;color:#fff;flex-shrink:0}
+  .tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:20px}
+  .tab{padding:9px 18px;font-size:13px;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s}
+  .tab:hover{color:var(--text)}
+  .tab.active{color:var(--rose);border-bottom-color:var(--rose);font-weight:500}
+  .empty{text-align:center;padding:48px 24px;color:var(--muted)}
+  .empty-icon{font-size:36px;margin-bottom:12px}
+  .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+  .section-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600}
+  .rose-gradient{background:linear-gradient(135deg,#b76e79,#7a3d45)}
+  .notify{position:fixed;bottom:20px;right:20px;background:#2c1f22;color:#fdf8f3;padding:12px 20px;border-radius:10px;font-size:13px;z-index:100;opacity:0;transition:opacity .3s;pointer-events:none}
+  .notify.show{opacity:1}
+</style>
+
+<div id="auth-screen" class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <h1>Venuè</h1>
+      <p>Wedding Venues</p>
+    </div>
+    <div id="auth-tabs" class="tabs">
+      <div class="tab active" onclick="switchAuth('login')">Sign In</div>
+      <div class="tab" onclick="switchAuth('register')">Create Account</div>
+    </div>
+    <div id="login-form">
+      <div class="input-group"><label>Email</label><input type="email" id="login-email" value="admin@venue.com" placeholder="your@email.com"></div>
+      <div class="input-group"><label>Password</label><input type="password" id="login-pass" value="password" placeholder="••••••••"></div>
+      <button class="btn btn-primary" style="width:100%;margin-top:4px" onclick="doLogin()">Sign In</button>
+    </div>
+    <div id="register-form" style="display:none">
+      <div class="grid-2">
+        <div class="input-group"><label>First Name</label><input type="text" id="reg-fname" placeholder="Sarah"></div>
+        <div class="input-group"><label>Last Name</label><input type="text" id="reg-lname" placeholder="Johnson"></div>
+      </div>
+      <div class="input-group"><label>Email</label><input type="email" id="reg-email" placeholder="your@email.com"></div>
+      <div class="input-group"><label>Password</label><input type="password" id="reg-pass" placeholder="Create password"></div>
+      <div class="input-group"><label>Role</label>
+        <select id="reg-role"><option value="user">Guest / Couple</option><option value="owner">Venue Owner</option></select>
+      </div>
+      <button class="btn btn-primary" style="width:100%;margin-top:4px" onclick="doRegister()">Create Account</button>
+    </div>
+  </div>
+</div>
+
+<div id="app-screen" class="app" style="display:none">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h1>Venuè</h1>
+      <span>Wedding Venues</span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">Menu</div>
+      <div class="nav-item active" onclick="nav('home')" id="nav-home">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1L1 7v8h5v-5h4v5h5V7z"/></svg>
+        Home
+      </div>
+      <div class="nav-item" onclick="nav('search')" id="nav-search">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="currentColor"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Explore Venues
+      </div>
+      <div class="nav-section" style="margin-top:8px">Manage</div>
+      <div class="nav-item" onclick="nav('my-venues')" id="nav-my-venues">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 6h12v8H2zM1 6l7-5 7 5"/></svg>
+        My Venues
+      </div>
+      <div class="nav-item" onclick="nav('users')" id="nav-users">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="currentColor"><circle cx="6" cy="5" r="2.5"/><path d="M1 14c0-3 2-5 5-5s5 2 5 5"/><circle cx="12" cy="5" r="2"/><path d="M12 10c2 0 3.5 1.5 3.5 4"/></svg>
+        Users
+      </div>
+      <div class="nav-section" style="margin-top:8px">Account</div>
+      <div class="nav-item" onclick="nav('profile')" id="nav-profile">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="5" r="3"/><path d="M2 15c0-4 2.7-6 6-6s6 2 6 6"/></svg>
+        My Profile
+      </div>
+    </nav>
+    <div class="sidebar-user" onclick="nav('profile')">
+      <div class="u-row">
+        <div class="avatar" id="sb-avatar">AD</div>
+        <div>
+          <div class="u-name" id="sb-name">Admin User</div>
+          <div class="u-role" id="sb-role">Administrator</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="topbar">
+      <div class="page-title" id="page-title">Dashboard</div>
+      <div class="topbar-actions">
+        <button class="btn btn-outline btn-sm" onclick="nav('search')">+ New Booking</button>
+        <button class="btn btn-primary btn-sm" onclick="openVenueModal()">Add Venue</button>
+      </div>
+    </div>
+    <div class="content">
+
+      <!-- HOME -->
+      <div class="screen active" id="screen-home">
+        <div class="grid-4" style="margin-bottom:24px">
+          <div class="stat-card"><div class="stat-label">Total Venues</div><div class="stat-val" style="color:var(--rose)">24</div><div class="stat-sub">+3 this month</div></div>
+          <div class="stat-card"><div class="stat-label">Active Bookings</div><div class="stat-val" style="color:var(--gold)">187</div><div class="stat-sub">+12 this week</div></div>
+          <div class="stat-card"><div class="stat-label">Registered Users</div><div class="stat-val">1,342</div><div class="stat-sub">+48 this month</div></div>
+          <div class="stat-card"><div class="stat-label">Revenue</div><div class="stat-val" style="color:#3b6d11">$94.2k</div><div class="stat-sub">This quarter</div></div>
+        </div>
+        <div class="section-head">
+          <div class="section-title">Featured Venues</div>
+          <button class="btn btn-ghost btn-sm" onclick="nav('search')">View all →</button>
+        </div>
+        <div class="grid-3" id="home-venues"></div>
+      </div>
+
+      <!-- SEARCH -->
+      <div class="screen" id="screen-search">
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Search venues by name, location, or style..." oninput="doSearch()">
+          <button class="btn btn-primary">Search</button>
+        </div>
+        <div class="filter-row">
+          <div class="filter-chip active" onclick="toggleFilter(this,'all')">All</div>
+          <div class="filter-chip" onclick="toggleFilter(this,'garden')">Garden</div>
+          <div class="filter-chip" onclick="toggleFilter(this,'ballroom')">Ballroom</div>
+          <div class="filter-chip" onclick="toggleFilter(this,'rooftop')">Rooftop</div>
+          <div class="filter-chip" onclick="toggleFilter(this,'beach')">Beach</div>
+          <div class="filter-chip" onclick="toggleFilter(this,'rustic')">Rustic</div>
+          <div class="filter-chip" onclick="toggleFilter(this,'indoor')">Indoor</div>
+          <div class="filter-chip" onclick="toggleFilter(this,'outdoor')">Outdoor</div>
+        </div>
+        <div class="grid-3" id="search-venues"></div>
+      </div>
+
+      <!-- MY VENUES -->
+      <div class="screen" id="screen-my-venues">
+        <div class="section-head">
+          <div class="section-title">My Venues</div>
+          <button class="btn btn-primary btn-sm" onclick="openVenueModal()">+ Add Venue</button>
+        </div>
+        <div class="card">
+          <table>
+            <thead><tr><th>Venue</th><th>Location</th><th>Capacity</th><th>Price/Day</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="my-venues-table"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- USERS -->
+      <div class="screen" id="screen-users">
+        <div class="section-head">
+          <div class="section-title">User Management</div>
+          <button class="btn btn-primary btn-sm" onclick="openUserModal()">+ Add User</button>
+        </div>
+        <div class="card" style="margin-bottom:16px">
+          <input type="text" id="user-search" placeholder="Search users..." oninput="filterUsers()" style="width:100%;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;outline:none;background:var(--cream)">
+        </div>
+        <div class="card">
+          <table>
+            <thead><tr><th>User</th><th>Email</th><th>Role</th><th>Joined</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="users-table"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- PROFILE -->
+      <div class="screen" id="screen-profile">
+        <div class="grid-2" style="align-items:start">
+          <div>
+            <div class="card card-lg" style="margin-bottom:16px">
+              <div class="profile-header">
+                <div class="profile-avatar" id="p-avatar">AD</div>
+                <div>
+                  <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600" id="p-name">Admin User</div>
+                  <div style="font-size:13px;color:var(--muted)" id="p-email">admin@venue.com</div>
+                  <div style="margin-top:6px"><span class="badge badge-admin" id="p-role-badge">Administrator</span></div>
+                </div>
+              </div>
+              <div class="divider"></div>
+              <div class="tabs">
+                <div class="tab active" onclick="profileTab('info')">Information</div>
+                <div class="tab" onclick="profileTab('edit')">Edit Profile</div>
+                <div class="tab" onclick="profileTab('security')">Security</div>
+              </div>
+              <div id="profile-info">
+                <div style="display:grid;gap:10px">
+                  <div style="display:flex;justify-content:space-between;font-size:13px">
+                    <span style="color:var(--muted)">Full Name</span><span id="pi-name">Admin User</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;font-size:13px">
+                    <span style="color:var(--muted)">Email</span><span id="pi-email">admin@venue.com</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;font-size:13px">
+                    <span style="color:var(--muted)">Phone</span><span id="pi-phone">+1 (555) 000-0000</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;font-size:13px">
+                    <span style="color:var(--muted)">Role</span><span id="pi-role">Administrator</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;font-size:13px">
+                    <span style="color:var(--muted)">Member Since</span><span>Jan 2024</span>
+                  </div>
+                </div>
+              </div>
+              <div id="profile-edit" style="display:none">
+                <div class="grid-2">
+                  <div class="input-group"><label>First Name</label><input type="text" id="e-fname" value="Admin"></div>
+                  <div class="input-group"><label>Last Name</label><input type="text" id="e-lname" value="User"></div>
+                </div>
+                <div class="input-group"><label>Email</label><input type="email" id="e-email" value="admin@venue.com"></div>
+                <div class="input-group"><label>Phone</label><input type="text" id="e-phone" value="+1 (555) 000-0000"></div>
+                <div class="input-group"><label>Bio</label><textarea id="e-bio" placeholder="Tell us about yourself...">Wedding venue specialist with 10+ years in event management.</textarea></div>
+                <button class="btn btn-primary" onclick="saveProfile()" style="width:100%">Save Changes</button>
+              </div>
+              <div id="profile-security" style="display:none">
+                <div class="input-group"><label>Current Password</label><input type="password" placeholder="••••••••"></div>
+                <div class="input-group"><label>New Password</label><input type="password" placeholder="••••••••"></div>
+                <div class="input-group"><label>Confirm Password</label><input type="password" placeholder="••••••••"></div>
+                <button class="btn btn-primary" onclick="notify('Password updated successfully!')" style="width:100%">Update Password</button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="card card-lg" style="margin-bottom:16px">
+              <div class="section-title" style="margin-bottom:16px">Activity Summary</div>
+              <div class="grid-2">
+                <div class="stat-card"><div class="stat-label">My Venues</div><div class="stat-val" style="color:var(--rose)">8</div></div>
+                <div class="stat-card"><div class="stat-label">Bookings</div><div class="stat-val" style="color:var(--gold)">34</div></div>
+              </div>
+            </div>
+            <div class="card card-lg">
+              <div class="section-title" style="margin-bottom:16px">Preferences</div>
+              <div style="display:grid;gap:12px">
+                <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:13px">
+                  <input type="checkbox" checked style="accent-color:var(--rose)"> Email notifications for new bookings
+                </label>
+                <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:13px">
+                  <input type="checkbox" checked style="accent-color:var(--rose)"> Weekly summary report
+                </label>
+                <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:13px">
+                  <input type="checkbox" style="accent-color:var(--rose)"> Marketing emails
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- Venue Modal -->
+<div id="venue-modal" style="display:none;position:fixed;inset:0;z-index:50">
+  <div class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="venue-modal-title">Add New Venue</div>
+        <button class="btn btn-ghost" onclick="closeModal('venue-modal')">✕</button>
+      </div>
+      <div class="grid-2">
+        <div class="input-group"><label>Venue Name</label><input type="text" id="v-name" placeholder="The Grand Garden"></div>
+        <div class="input-group"><label>Location</label><input type="text" id="v-location" placeholder="New York, NY"></div>
+      </div>
+      <div class="grid-2">
+        <div class="input-group"><label>Capacity</label><input type="number" id="v-capacity" placeholder="250"></div>
+        <div class="input-group"><label>Price Per Day ($)</label><input type="number" id="v-price" placeholder="5000"></div>
+      </div>
+      <div class="input-group"><label>Category</label>
+        <select id="v-cat"><option>Garden</option><option>Ballroom</option><option>Rooftop</option><option>Beach</option><option>Rustic</option><option>Indoor</option><option>Outdoor</option></select>
+      </div>
+      <div class="input-group"><label>Description</label><textarea id="v-desc" placeholder="Describe the venue..."></textarea></div>
+      <div class="input-group"><label>Status</label>
+        <select id="v-status"><option value="active">Active</option><option value="pending">Pending Review</option><option value="inactive">Inactive</option></select>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:4px">
+        <button class="btn btn-outline" onclick="closeModal('venue-modal')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveVenue()" id="venue-save-btn">Add Venue</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- User Modal -->
+<div id="user-modal" style="display:none;position:fixed;inset:0;z-index:50">
+  <div class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="user-modal-title">Add New User</div>
+        <button class="btn btn-ghost" onclick="closeModal('user-modal')">✕</button>
+      </div>
+      <div class="grid-2">
+        <div class="input-group"><label>First Name</label><input type="text" id="u-fname" placeholder="John"></div>
+        <div class="input-group"><label>Last Name</label><input type="text" id="u-lname" placeholder="Doe"></div>
+      </div>
+      <div class="input-group"><label>Email</label><input type="email" id="u-email" placeholder="john@example.com"></div>
+      <div class="input-group"><label>Role</label>
+        <select id="u-role"><option value="user">Guest / Couple</option><option value="owner">Venue Owner</option><option value="admin">Administrator</option></select>
+      </div>
+      <div class="input-group"><label>Status</label>
+        <select id="u-status"><option value="active">Active</option><option value="pending">Pending</option><option value="inactive">Inactive</option></select>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:4px">
+        <button class="btn btn-outline" onclick="closeModal('user-modal')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveUser()" id="user-save-btn">Add User</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Delete Modal -->
+<div id="confirm-modal" style="display:none;position:fixed;inset:0;z-index:60">
+  <div class="modal-overlay">
+    <div class="modal" style="max-width:360px;text-align:center">
+      <div style="font-size:28px;margin-bottom:12px">🗑️</div>
+      <div style="font-size:16px;font-weight:500;margin-bottom:8px" id="confirm-title">Delete Venue</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:20px" id="confirm-msg">Are you sure? This action cannot be undone.</div>
+      <div style="display:flex;gap:10px;justify-content:center">
+        <button class="btn btn-outline" onclick="closeModal('confirm-modal')">Cancel</button>
+        <button class="btn btn-danger" id="confirm-btn">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="notify" id="notify-bar"></div>
+
+<script>
+const EMOJIS=['🌸','🏛️','🌿','🌊','🏡','🌹','✨','🎊','🕊️','🌺'];
+const COLORS=['#f7e8ea','#e8f0f7','#e8f7ec','#f7f0e8','#f0e8f7','#e8f7f5','#faf3e0'];
+
+let venues=[
+  {id:1,name:'The Rosewood Manor',loc:'Hamptons, NY',cap:300,price:12000,cat:'Garden',desc:'Elegant manor with rose gardens',status:'active',emoji:'🌸',color:'#f7e8ea'},
+  {id:2,name:'Grand Ballroom Venezia',loc:'Manhattan, NY',cap:500,price:18000,cat:'Ballroom',desc:'Venetian-inspired grand ballroom',status:'active',emoji:'🏛️',color:'#e8f0f7'},
+  {id:3,name:'Serenity Gardens',loc:'Napa Valley, CA',cap:200,price:8500,cat:'Garden',desc:'Lush vineyard garden setting',status:'active',emoji:'🌿',color:'#e8f7ec'},
+  {id:4,name:'Ocean Breeze Terrace',loc:'Malibu, CA',cap:150,price:14000,cat:'Beach',desc:'Cliffside ocean view venue',status:'active',emoji:'🌊',color:'#e8f0f7'},
+  {id:5,name:'The Rustic Barn',loc:'Vermont',cap:180,price:6000,cat:'Rustic',desc:'Charming restored heritage barn',status:'active',emoji:'🏡',color:'#f7f0e8'},
+  {id:6,name:'Sky Garden Rooftop',loc:'Chicago, IL',cap:120,price:9500,cat:'Rooftop',desc:'Downtown skyline panoramic views',status:'pending',emoji:'🌹',color:'#faf3e0'},
+  {id:7,name:'Crystal Pavilion',loc:'Miami, FL',cap:400,price:16000,cat:'Indoor',desc:'All-glass modern pavilion',status:'active',emoji:'✨',color:'#f0e8f7'},
+  {id:8,name:'Willow Creek Estate',loc:'Nashville, TN',cap:250,price:11000,cat:'Outdoor',desc:'Southern charm with willow trees',status:'active',emoji:'🎊',color:'#e8f7f5'},
+];
+let users=[
+  {id:1,fname:'Admin',lname:'User',email:'admin@venue.com',role:'admin',joined:'Jan 2024',status:'active'},
+  {id:2,fname:'Sarah',lname:'Mitchell',email:'sarah@email.com',role:'owner',joined:'Feb 2024',status:'active'},
+  {id:3,fname:'James',lname:'Carter',email:'james@email.com',role:'user',joined:'Mar 2024',status:'active'},
+  {id:4,fname:'Emily',lname:'Chen',email:'emily@email.com',role:'owner',joined:'Mar 2024',status:'active'},
+  {id:5,fname:'Michael',lname:'Torres',email:'m.torres@email.com',role:'user',joined:'Apr 2024',status:'pending'},
+  {id:6,fname:'Olivia',lname:'Park',email:'olivia@email.com',role:'user',joined:'Apr 2024',status:'active'},
+  {id:7,fname:'David',lname:'Kim',email:'david@email.com',role:'owner',joined:'May 2024',status:'inactive'},
+];
+let currentUser={fname:'Admin',lname:'User',email:'admin@venue.com',role:'admin',phone:'+1 (555) 000-0000'};
+let editingVenueId=null, editingUserId=null, venueIdCounter=9, userIdCounter=8;
+let activeFilter='all', searchTerm='';
+
+function switchAuth(tab){
+  document.getElementById('login-form').style.display=tab==='login'?'block':'none';
+  document.getElementById('register-form').style.display=tab==='register'?'block':'none';
+  document.querySelectorAll('#auth-tabs .tab').forEach((t,i)=>t.classList.toggle('active',(tab==='login'&&i===0)||(tab==='register'&&i===1)));
+}
+function doLogin(){
+  const e=document.getElementById('login-email').value;
+  const p=document.getElementById('login-pass').value;
+  if(!e||!p){notify('Please enter email and password');return;}
+  const u=users.find(u=>u.email===e)||{fname:'Admin',lname:'User',email:e,role:'admin'};
+  currentUser={fname:u.fname,lname:u.lname,email:u.email,role:u.role||'user',phone:'+1 (555) 000-0000'};
+  launchApp();
+}
+function doRegister(){
+  const fn=document.getElementById('reg-fname').value;
+  const ln=document.getElementById('reg-lname').value;
+  const em=document.getElementById('reg-email').value;
+  const pw=document.getElementById('reg-pass').value;
+  const rl=document.getElementById('reg-role').value;
+  if(!fn||!ln||!em||!pw){notify('Please fill all fields');return;}
+  const nu={id:userIdCounter++,fname:fn,lname:ln,email:em,role:rl,joined:new Date().toLocaleDateString('en-US',{month:'short',year:'numeric'}),status:'active'};
+  users.push(nu);
+  currentUser={fname:fn,lname:ln,email:em,role:rl,phone:''};
+  launchApp();
+}
+function launchApp(){
+  document.getElementById('auth-screen').style.display='none';
+  document.getElementById('app-screen').style.display='flex';
+  updateSidebarUser();
+  renderAll();
+  nav('home');
+}
+function updateSidebarUser(){
+  const init=(currentUser.fname[0]+(currentUser.lname?currentUser.lname[0]:'')).toUpperCase();
+  document.getElementById('sb-avatar').textContent=init;
+  document.getElementById('sb-name').textContent=currentUser.fname+' '+currentUser.lname;
+  document.getElementById('sb-role').textContent=roleName(currentUser.role);
+  document.getElementById('p-avatar').textContent=init;
+  document.getElementById('p-name').textContent=currentUser.fname+' '+currentUser.lname;
+  document.getElementById('p-email').textContent=currentUser.email;
+  document.getElementById('pi-name').textContent=currentUser.fname+' '+currentUser.lname;
+  document.getElementById('pi-email').textContent=currentUser.email;
+  document.getElementById('pi-phone').textContent=currentUser.phone||'—';
+  document.getElementById('pi-role').textContent=roleName(currentUser.role);
+  document.getElementById('p-role-badge').textContent=roleName(currentUser.role);
+  document.getElementById('p-role-badge').className='badge badge-'+currentUser.role;
+  document.getElementById('e-fname').value=currentUser.fname;
+  document.getElementById('e-lname').value=currentUser.lname;
+  document.getElementById('e-email').value=currentUser.email;
+  document.getElementById('e-phone').value=currentUser.phone||'';
+}
+function roleName(r){return{admin:'Administrator',owner:'Venue Owner',user:'Guest / Couple'}[r]||r}
+
+function nav(page){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('screen-'+page).classList.add('active');
+  document.getElementById('nav-'+page)&&document.getElementById('nav-'+page).classList.add('active');
+  const titles={home:'Dashboard','search':'Explore Venues','my-venues':'My Venues',users:'User Management',profile:'My Profile'};
+  document.getElementById('page-title').textContent=titles[page]||page;
+  if(page==='search')renderSearch();
+}
+function renderAll(){renderHome();renderMyVenues();renderUsers();}
+
+function venueCard(v,actions){
+  return `<div class="venue-card">
+    <div class="venue-img"><div class="venue-img-bg" style="background:${v.color||'#f7e8ea'}">${v.emoji||'🌸'}</div></div>
+    <div class="venue-body">
+      <div class="venue-name">${v.name}</div>
+      <div class="venue-loc">📍 ${v.loc}</div>
+      <div class="venue-tags"><span class="tag">${v.cat}</span>${v.status==='pending'?'<span class="tag tag-gold">Pending</span>':''}</div>
+      <div class="venue-footer">
+        <div><div class="price">$${Number(v.price).toLocaleString()}<span style="font-size:11px;color:var(--muted)">/day</span></div><div class="cap">Up to ${v.cap} guests</div></div>
+        ${actions||'<button class="btn btn-outline btn-sm" onclick="">Book Now</button>'}
+      </div>
+    </div>
+  </div>`;
+}
+function renderHome(){
+  document.getElementById('home-venues').innerHTML=venues.filter(v=>v.status==='active').slice(0,6).map(v=>venueCard(v)).join('');
+}
+function renderSearch(){
+  const q=searchTerm.toLowerCase();
+  const f=activeFilter;
+  let res=venues.filter(v=>{
+    const match=!q||v.name.toLowerCase().includes(q)||v.loc.toLowerCase().includes(q)||v.cat.toLowerCase().includes(q);
+    const filt=f==='all'||v.cat.toLowerCase()===f;
+    return match&&filt;
+  });
+  document.getElementById('search-venues').innerHTML=res.length?res.map(v=>venueCard(v)).join(''):`<div class="empty" style="grid-column:1/-1"><div class="empty-icon">🔍</div><div>No venues found</div></div>`;
+}
+function doSearch(){searchTerm=document.getElementById('search-input').value;renderSearch();}
+function toggleFilter(el,f){
+  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');activeFilter=f;renderSearch();
+}
+function renderMyVenues(){
+  const tb=document.getElementById('my-venues-table');
+  tb.innerHTML=venues.map(v=>`<tr>
+    <td><strong>${v.name}</strong><div style="font-size:11px;color:var(--muted)">${v.desc}</div></td>
+    <td>${v.loc}</td><td>${v.cap}</td><td>$${Number(v.price).toLocaleString()}</td>
+    <td><span class="badge badge-${v.status}">${v.status}</span></td>
+    <td><div class="actions">
+      <button class="btn btn-outline btn-sm" onclick="editVenue(${v.id})">Edit</button>
+      <button class="btn btn-danger btn-sm" onclick="confirmDelete('venue',${v.id})">Delete</button>
+    </div></td>
+  </tr>`).join('');
+}
+function renderUsers(){
+  const q=(document.getElementById('user-search')?.value||'').toLowerCase();
+  const tb=document.getElementById('users-table');
+  const list=q?users.filter(u=>(u.fname+' '+u.lname).toLowerCase().includes(q)||u.email.toLowerCase().includes(q)):users;
+  tb.innerHTML=list.map(u=>`<tr>
+    <td><div style="display:flex;align-items:center;gap:10px"><div class="avatar" style="width:28px;height:28px;font-size:11px;flex-shrink:0">${(u.fname[0]+(u.lname?u.lname[0]:'')).toUpperCase()}</div>${u.fname} ${u.lname}</div></td>
+    <td>${u.email}</td>
+    <td><span class="badge badge-${u.role==='admin'?'admin':u.role==='owner'?'owner':'inactive'}">${roleName(u.role)}</span></td>
+    <td>${u.joined}</td>
+    <td><span class="badge badge-${u.status}">${u.status}</span></td>
+    <td><div class="actions">
+      <button class="btn btn-outline btn-sm" onclick="editUser(${u.id})">Edit</button>
+      <button class="btn btn-danger btn-sm" onclick="confirmDelete('user',${u.id})">Delete</button>
+    </div></td>
+  </tr>`).join('');
+}
+function filterUsers(){renderUsers();}
+
+function openVenueModal(prefill){
+  editingVenueId=null;
+  ['v-name','v-location','v-capacity','v-price','v-desc'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('v-cat').value='Garden';
+  document.getElementById('v-status').value='active';
+  document.getElementById('venue-modal-title').textContent='Add New Venue';
+  document.getElementById('venue-save-btn').textContent='Add Venue';
+  document.getElementById('venue-modal').style.display='block';
+}
+function editVenue(id){
+  const v=venues.find(v=>v.id===id);if(!v)return;
+  editingVenueId=id;
+  document.getElementById('v-name').value=v.name;
+  document.getElementById('v-location').value=v.loc;
+  document.getElementById('v-capacity').value=v.cap;
+  document.getElementById('v-price').value=v.price;
+  document.getElementById('v-cat').value=v.cat;
+  document.getElementById('v-desc').value=v.desc;
+  document.getElementById('v-status').value=v.status;
+  document.getElementById('venue-modal-title').textContent='Edit Venue';
+  document.getElementById('venue-save-btn').textContent='Save Changes';
+  document.getElementById('venue-modal').style.display='block';
+}
+function saveVenue(){
+  const nm=document.getElementById('v-name').value;
+  if(!nm){notify('Venue name is required');return;}
+  const data={name:nm,loc:document.getElementById('v-location').value,cap:parseInt(document.getElementById('v-capacity').value)||100,price:parseInt(document.getElementById('v-price').value)||5000,cat:document.getElementById('v-cat').value,desc:document.getElementById('v-desc').value,status:document.getElementById('v-status').value};
+  if(editingVenueId){
+    const i=venues.findIndex(v=>v.id===editingVenueId);
+    venues[i]={...venues[i],...data};
+    notify('Venue updated successfully!');
+  } else {
+    const cats={Garden:'🌸',Ballroom:'🏛️',Rooftop:'🌹',Beach:'🌊',Rustic:'🏡',Indoor:'✨',Outdoor:'🌿'};
+    venues.push({id:venueIdCounter++,...data,emoji:cats[data.cat]||'🌸',color:COLORS[Math.floor(Math.random()*COLORS.length)]});
+    notify('Venue added successfully!');
+  }
+  closeModal('venue-modal');renderAll();
+}
+function openUserModal(){
+  editingUserId=null;
+  ['u-fname','u-lname','u-email'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('u-role').value='user';
+  document.getElementById('u-status').value='active';
+  document.getElementById('user-modal-title').textContent='Add New User';
+  document.getElementById('user-save-btn').textContent='Add User';
+  document.getElementById('user-modal').style.display='block';
+}
+function editUser(id){
+  const u=users.find(u=>u.id===id);if(!u)return;
+  editingUserId=id;
+  document.getElementById('u-fname').value=u.fname;
+  document.getElementById('u-lname').value=u.lname;
+  document.getElementById('u-email').value=u.email;
+  document.getElementById('u-role').value=u.role;
+  document.getElementById('u-status').value=u.status;
+  document.getElementById('user-modal-title').textContent='Edit User';
+  document.getElementById('user-save-btn').textContent='Save Changes';
+  document.getElementById('user-modal').style.display='block';
+}
+function saveUser(){
+  const fn=document.getElementById('u-fname').value;
+  if(!fn){notify('First name is required');return;}
+  const data={fname:fn,lname:document.getElementById('u-lname').value,email:document.getElementById('u-email').value,role:document.getElementById('u-role').value,status:document.getElementById('u-status').value};
+  if(editingUserId){
+    const i=users.findIndex(u=>u.id===editingUserId);
+    users[i]={...users[i],...data};
+    notify('User updated successfully!');
+  } else {
+    users.push({id:userIdCounter++,...data,joined:new Date().toLocaleDateString('en-US',{month:'short',year:'numeric'})});
+    notify('User added successfully!');
+  }
+  closeModal('user-modal');renderUsers();
+}
+function confirmDelete(type,id){
+  document.getElementById('confirm-title').textContent='Delete '+(type==='venue'?'Venue':'User');
+  document.getElementById('confirm-msg').textContent='Are you sure you want to delete this '+(type==='venue'?'venue':'user')+'? This action cannot be undone.';
+  document.getElementById('confirm-btn').onclick=()=>{
+    if(type==='venue'){venues=venues.filter(v=>v.id!==id);renderAll();}
+    else{users=users.filter(u=>u.id!==id);renderUsers();}
+    closeModal('confirm-modal');
+    notify((type==='venue'?'Venue':'User')+' deleted.');
+  };
+  document.getElementById('confirm-modal').style.display='block';
+}
+function closeModal(id){document.getElementById(id).style.display='none';}
+
+function profileTab(tab){
+  document.querySelectorAll('#screen-profile .tab').forEach((t,i)=>t.classList.toggle('active',(tab==='info'&&i===0)||(tab==='edit'&&i===1)||(tab==='security'&&i===2)));
+  document.getElementById('profile-info').style.display=tab==='info'?'block':'none';
+  document.getElementById('profile-edit').style.display=tab==='edit'?'block':'none';
+  document.getElementById('profile-security').style.display=tab==='security'?'block':'none';
+}
+function saveProfile(){
+  currentUser.fname=document.getElementById('e-fname').value;
+  currentUser.lname=document.getElementById('e-lname').value;
+  currentUser.email=document.getElementById('e-email').value;
+  currentUser.phone=document.getElementById('e-phone').value;
+  updateSidebarUser();profileTab('info');notify('Profile updated successfully!');
+}
+function notify(msg){
+  const n=document.getElementById('notify-bar');
+  n.textContent=msg;n.classList.add('show');
+  setTimeout(()=>n.classList.remove('show'),3000);
+}
+</script>
