@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Venue.Application/Venue.Application.csproj" />
+  <Project Path="Venue.Domain/Venue.Domain.csproj" />
+  <Project Path="Venue.Infrastructure/Venue.Infrastructure.csproj" />
+  <Project Path="Venue.UI/Venue.UI.csproj" />
+</Solution>
