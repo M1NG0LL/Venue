@@ -2,7 +2,7 @@
 using Venue.Application.Dto.User;
 using Venue.Domain.Enums;
 
-namespace Venue.Application.Services.User
+namespace Venue.Application.Services.Account
 {
     public interface IUserService
     {

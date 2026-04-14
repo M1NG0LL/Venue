@@ -6,7 +6,7 @@ using Venue.Application.Dto.User;
 using Venue.Domain.Enums;
 using Venue.Domain.Interfaces;
 
-namespace Venue.Application.Services.User
+namespace Venue.Application.Services.Account
 {
     public class UserService : IUserService
     {
@@ -100,6 +100,9 @@ namespace Venue.Application.Services.User
 
         public async Task<ResponseBase> LogoutAsync()
         {
+            if (_currentUserService.UserId == null)
+                return ResponseBase.Failure("No user is currently logged in");
+
             await _signInManager.SignOutAsync();
 
             return ResponseBase.Success("Logged out successfully");
