@@ -1,0 +1,11 @@
+E:\project\Venue\Venue.UI\obj\Loginmenu\Loginmenu\bin\Debug\Loginmenu.exe.config
+E:\project\Venue\Venue.UI\obj\Loginmenu\Loginmenu\bin\Debug\Loginmenu.exe
+E:\project\Venue\Venue.UI\obj\Loginmenu\Loginmenu\bin\Debug\Loginmenu.pdb
+E:\project\Venue\Venue.UI\obj\Loginmenu\Loginmenu\obj\Debug\Loginmenu.csproj.AssemblyReference.cache
+E:\project\Venue\Venue.UI\obj\Loginmenu\Loginmenu\obj\Debug\Loginmenu.Login_menu.resources
+E:\project\Venue\Venue.UI\obj\Loginmenu\Loginmenu\obj\Debug\Loginmenu.Properties.Resources.resources
+E:\project\Venue\Venue.UI\obj\Loginmenu\Loginmenu\obj\Debug\Loginmenu.csproj.GenerateResource.cache
+E:\project\Venue\Venue.UI\obj\Loginmenu\Loginmenu\obj\Debug\Loginmenu.csproj.CoreCompileInputs.cache
+E:\project\Venue\Venue.UI\obj\Loginmenu\Loginmenu\obj\Debug\Loginmenu.exe
+E:\project\Venue\Venue.UI\obj\Loginmenu\Loginmenu\obj\Debug\Loginmenu.pdb
+E:\project\Venue\Venue.UI\obj\Loginmenu\Loginmenu\obj\Debug\Loginmenu.Registering.resources
