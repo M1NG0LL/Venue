@@ -26,12 +26,10 @@ namespace Venue.UI
         #region Scopes
         private static IServiceCollection AddScopes(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddLogging();
-
             services.AddInfrastructureScopes(configuration);
 
             #region UI Forms
-            services.AddTransient<Form1>();
+
             #endregion
 
             return services;

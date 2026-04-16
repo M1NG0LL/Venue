@@ -1,4 +1,4 @@
-﻿using Venue.Application.Dtos.Common;
+﻿using Venue.Application.Dto.Common;
 using Venue.Domain.Enums;
 
 namespace Venue.Application.Dto.User

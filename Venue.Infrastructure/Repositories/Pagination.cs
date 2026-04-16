@@ -6,8 +6,7 @@ namespace Venue.Infrastructure.Repositories
 {
     public class Pagination : IPagination
     {
-        public Task<PagedData<T>> PagedResultAsync<T>(List<T> list, int pageNumber, int pageSize) 
-            where T : class
+        public Task<PagedData<T>> PagedResultAsync<T>(List<T> list, int pageNumber, int pageSize) where T : class
         {
             var skipValue = Math.Max((pageNumber - 1) * pageSize, 0);
             var pagedList = list.Skip(skipValue).Take(pageSize).ToList();
@@ -23,14 +22,13 @@ namespace Venue.Infrastructure.Repositories
             return Task.FromResult(result);
         }
 
-        public async Task<PagedData<T>> PagedResultAsync<T>(IQueryable<T> query, int pageNumber, int pageSize, CancellationToken cancellationToken = default)
-            where T : class
+        public async Task<PagedData<T>> PagedResultAsync<T>(IQueryable<T> query, int pageNumber, int pageSize) where T : class
         {
             query = query.AsNoTracking();
             var skipValue = Math.Max((pageNumber - 1) * pageSize, 0);
 
-            var data = await query.Skip(skipValue).Take(pageSize).ToListAsync(cancellationToken);
-            var count = data.Count;
+            var data = await query.Skip(skipValue).Take(pageSize).ToListAsync();
+            var count = await query.CountAsync();
 
             var result = new PagedData<T>
             {

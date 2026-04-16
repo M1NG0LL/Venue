@@ -47,33 +47,4 @@
             };
         }
     }
-
-    public class PaginatedResponseBase<T> : ResponseBase<T>
-    {
-        public int PageNumber { get; set; }
-        public int PageSize { get; set; }
-        public int TotalCount { get; set; }
-        public int TotalPages => (int)Math.Ceiling((double)TotalCount / PageSize);
-
-        public static PaginatedResponseBase<T> Success(T? data, int pageNumber, int pageSize, int totalCount, string message = "Operation completed successfully")
-            => new PaginatedResponseBase<T>()
-            {
-                IsSuccess = true,
-                Message = message,
-                Errors = null,
-                Data = data,
-                PageNumber = pageNumber,
-                PageSize = pageSize,
-                TotalCount = totalCount
-            };
-
-        public static new PaginatedResponseBase<T> Failure(string message, List<string>? errors = null)
-            => new PaginatedResponseBase<T>()
-            {
-                IsSuccess = false,
-                Message = message,
-                Errors = errors,
-                Data = default
-            };
-    }
 }
