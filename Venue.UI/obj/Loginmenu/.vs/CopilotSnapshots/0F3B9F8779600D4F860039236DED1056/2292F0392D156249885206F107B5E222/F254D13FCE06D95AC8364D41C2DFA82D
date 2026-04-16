@@ -1,0 +1,69 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Loginmenu
+{
+    public partial class Registering : Form
+    {
+        public Registering()
+        {
+            InitializeComponent();
+            textBox4.UseSystemPasswordChar = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+        }
+
+        private void Registering_Load(object sender, EventArgs e)
+        {
+            comboBox1.Items.Clear();
+            comboBox1.Items.Add("Venue Owner");
+            comboBox1.Items.Add("Geust/Couple");
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox4.UseSystemPasswordChar = !checkBox1.Checked;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
