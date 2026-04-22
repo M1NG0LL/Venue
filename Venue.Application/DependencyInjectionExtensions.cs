@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Venue.Application.Services.User;
+using Venue.Application.Services.Account;
+using Venue.Application.Services.Admin;
+using Venue.Application.Services.Review;
+using Venue.Application.Services.Venue;
 
 namespace Venue.Application
 {
@@ -7,7 +10,13 @@ namespace Venue.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserPasswordService, UserPasswordService>();
+            services.AddScoped<IVenueService, VenueService>();
+            services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<IReviewService, ReviewService>();
 
             return services;
         }

@@ -11,7 +11,7 @@ namespace Venue.Domain.Entities
         public required VenueContactInfo ContactInfo { get; set; }
         public required VenueConfiguration Info { get; set; }
 
-        public List<Review>? Reviews { get; set; }
+        public List<Review> Reviews { get; set; } = new();
     }
 
     public class VenueContactInfo
