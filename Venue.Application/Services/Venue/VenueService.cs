@@ -16,13 +16,13 @@ namespace Venue.Application.Services.Venue
         private readonly IPagination _pagination;
         private readonly Guid _userId;
 
-        public VenueService(IRepository<VenueEntity> repository, IUnitOfWork unitOfWork, IMapper mapper, IPagination pagination, Guid userId)
+        public VenueService(IRepository<VenueEntity> repository, IUnitOfWork unitOfWork, IMapper mapper, IPagination pagination, ICurrentUserService currentUserService)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _pagination = pagination;
-            _userId = userId;
+            _userId = currentUserService.UserId ?? throw new ArgumentNullException(nameof(currentUserService.UserId));
         }
 
         #region Create, Update & Delete
