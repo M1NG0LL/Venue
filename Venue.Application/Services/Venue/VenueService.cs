@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Venue.Application.Common;
 using Venue.Application.Dtos.Common;
+using Venue.Application.Dtos.Review;
 using Venue.Application.Dtos.Venue;
 using Venue.Domain.Entities;
 using Venue.Domain.Interfaces;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Venue.Application.Services.Venue
 {
@@ -80,7 +82,7 @@ namespace Venue.Application.Services.Venue
             if (entity == null)
                 return ResponseBase<VenueDto>.Failure("Venue not found.");
 
-            var dto = MappingVenueDto(entity);  
+            var dto = await MappingVenueDtoAsync(entity);
 
             return ResponseBase<VenueDto>.Success(dto);
         }
@@ -117,11 +119,11 @@ namespace Venue.Application.Services.Venue
 
         public async Task<PaginatedResponseBase<List<BasicVenueDto>>> SearchAsync(VenueSearchDto dto, CancellationToken cancellationToken = default)
         {
-            var venueQuery = _repository.Get(x => 
-                (string.IsNullOrEmpty(dto.SearchText) || 
-                    x.Name.Contains(dto.SearchText) || 
+            var venueQuery = _repository.Get(x =>
+                (string.IsNullOrEmpty(dto.SearchText) ||
+                    x.Name.Contains(dto.SearchText) ||
                     x.Description.Contains(dto.SearchText)
-                )       
+                )
                 , isNoTracking: true
             ).Include(x => x.Reviews)
             .Select(v => new
@@ -164,8 +166,10 @@ namespace Venue.Application.Services.Venue
             }).ToList();
         }
 
-        private VenueDto MappingVenueDto(VenueEntity venue)
+        private async Task<VenueDto> MappingVenueDtoAsync(VenueEntity venue)
         {
+            var reviewPagination = await _pagination.PagedResultAsync(venue.Reviews, 1, 10);
+
             return new VenueDto
             {
                 Id = venue.Id,
@@ -187,6 +191,16 @@ namespace Venue.Application.Services.Venue
                     PricePerEvent = venue.Info.PricePerEvent,
                     SeatingCapacity = venue.Info.SeatingCapacity,
                 },
+
+                Reviews = reviewPagination.Data.Select(x => new ReviewDto()
+                {
+                    Id = x.Id,
+                    VenueId = x.VenueId,
+                    VenueName = venue.Name,
+                    Rate = x.Rate,
+                    Comment = x.Comment,
+                    CreatedAt = x.CreatedAt
+                }).ToList(),
 
                 Rating = venue.Reviews != null && venue.Reviews.Count > 0 ? venue.Reviews.Average(r => r.Rate) : 0,
                 TotalRating = venue.Reviews != null ? venue.Reviews.Count : 0

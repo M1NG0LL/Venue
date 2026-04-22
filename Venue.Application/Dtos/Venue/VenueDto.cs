@@ -1,4 +1,5 @@
 ﻿using Venue.Application.Dtos.Common;
+using Venue.Application.Dtos.Review;
 
 namespace Venue.Application.Dtos.Venue
 {
@@ -10,6 +11,8 @@ namespace Venue.Application.Dtos.Venue
 
         public required VenueContactInfoDto ContactInfo { get; set; }
         public required VenueConfigurationDto Info { get; set; }
+
+        public List<ReviewDto> Reviews { get; set; } = new();
 
         public required int TotalRating { get; set; }
         public required double Rating { get; set; }

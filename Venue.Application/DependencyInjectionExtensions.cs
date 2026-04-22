@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Venue.Application.Services.Account;
 using Venue.Application.Services.Admin;
+using Venue.Application.Services.Review;
 using Venue.Application.Services.Venue;
 
 namespace Venue.Application
@@ -15,6 +16,7 @@ namespace Venue.Application
             services.AddScoped<IUserPasswordService, UserPasswordService>();
             services.AddScoped<IVenueService, VenueService>();
             services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<IReviewService, ReviewService>();
 
             return services;
         }

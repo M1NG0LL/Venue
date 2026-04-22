@@ -31,7 +31,7 @@ namespace Venue.Application.Services.Admin
 
         public async Task<PaginatedResponseBase<AdminUserListDto>> GetUsersAsync(AdminSearchDto dto, CancellationToken cancellationToken = default)
         {
-            var usersQuery = _userManager.Users.Where(x => x.Id != _adminUserId);
+            var usersQuery = _userManager.Users.Where(x => x.Id != _adminUserId).AsNoTracking();
 
             if (dto.SortByType == SortByType.Ascending)
                 usersQuery = usersQuery.OrderBy(x => x.CreatedAt);
