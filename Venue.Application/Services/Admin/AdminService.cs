@@ -3,16 +3,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Venue.Application.Common;
 using Venue.Application.Dtos.Admin;
-using Venue.Domain.Common;
 using Venue.Domain.Interfaces;
 
 namespace Venue.Application.Services.Admin
 {
-    public interface IAdminService
-    {
-        Task<PaginatedResponseBase<AdminUserListDto>> GetUsersAsync(AdminSearchDto dto, CancellationToken cancellationToken = default);
-        Task<ResponseBase> DeleteUserAsync(AdminDeleteUserDto deleteUserDto, CancellationToken cancellationToken = default);
-    }
 
     public class AdminService : IAdminService
     {
