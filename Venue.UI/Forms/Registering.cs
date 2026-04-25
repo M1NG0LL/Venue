@@ -65,5 +65,12 @@ namespace Loginmenu
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var mainScreenForm = new mainscreen();
+            mainScreenForm.Show();
+            this.Hide();
+        }
     }
 }

@@ -44,13 +44,45 @@
             button1 = new Button();
             label6 = new Label();
             panel3 = new Panel();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            label24 = new Label();
+            label23 = new Label();
+            label22 = new Label();
+            label21 = new Label();
+            label20 = new Label();
+            label19 = new Label();
+            label18 = new Label();
+            label17 = new Label();
+            label16 = new Label();
+            label15 = new Label();
+            tabPage2 = new TabPage();
+            textBox7 = new TextBox();
+            label27 = new Label();
+            textBox4 = new TextBox();
+            label29 = new Label();
+            label28 = new Label();
+            textBox5 = new TextBox();
+            label26 = new Label();
+            textBox2 = new TextBox();
+            label25 = new Label();
+            textBox1 = new TextBox();
+            tabPage3 = new TabPage();
+            label32 = new Label();
+            textBox9 = new TextBox();
+            label31 = new Label();
+            textBox8 = new TextBox();
+            label30 = new Label();
+            textBox6 = new TextBox();
             label12 = new Label();
             label11 = new Label();
             textBox3 = new TextBox();
             panel4 = new Panel();
             panel7 = new Panel();
+            label14 = new Label();
             label10 = new Label();
             panel6 = new Panel();
+            label13 = new Label();
             label9 = new Label();
             label8 = new Label();
             panel5 = new Panel();
@@ -58,49 +90,18 @@
             checkBox2 = new CheckBox();
             checkBox1 = new CheckBox();
             label7 = new Label();
-            label13 = new Label();
-            label14 = new Label();
-            tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
-            tabPage2 = new TabPage();
-            tabPage3 = new TabPage();
-            label15 = new Label();
-            label16 = new Label();
-            label17 = new Label();
-            label18 = new Label();
-            label19 = new Label();
-            label20 = new Label();
-            label21 = new Label();
-            label22 = new Label();
-            label23 = new Label();
-            label24 = new Label();
-            label25 = new Label();
-            textBox1 = new TextBox();
-            label26 = new Label();
-            textBox2 = new TextBox();
-            label28 = new Label();
-            textBox5 = new TextBox();
-            label29 = new Label();
-            label30 = new Label();
-            textBox6 = new TextBox();
-            textBox4 = new TextBox();
-            label27 = new Label();
-            textBox7 = new TextBox();
-            label31 = new Label();
-            textBox8 = new TextBox();
-            label32 = new Label();
-            textBox9 = new TextBox();
+            button3 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
-            panel4.SuspendLayout();
-            panel7.SuspendLayout();
-            panel6.SuspendLayout();
-            panel5.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
+            panel4.SuspendLayout();
+            panel7.SuspendLayout();
+            panel6.SuspendLayout();
+            panel5.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -321,6 +322,341 @@
             panel3.Size = new Size(509, 451);
             panel3.TabIndex = 5;
             // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
+            tabControl1.Location = new Point(22, 144);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(470, 304);
+            tabControl1.TabIndex = 15;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(label24);
+            tabPage1.Controls.Add(label23);
+            tabPage1.Controls.Add(label22);
+            tabPage1.Controls.Add(label21);
+            tabPage1.Controls.Add(label20);
+            tabPage1.Controls.Add(label19);
+            tabPage1.Controls.Add(label18);
+            tabPage1.Controls.Add(label17);
+            tabPage1.Controls.Add(label16);
+            tabPage1.Controls.Add(label15);
+            tabPage1.Location = new Point(4, 29);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(462, 271);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "information";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Font = new Font("Century", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label24.Location = new Point(361, 166);
+            label24.Name = "label24";
+            label24.Size = new Size(62, 16);
+            label24.TabIndex = 10;
+            label24.Text = " jan 2024";
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Font = new Font("Century", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label23.ForeColor = SystemColors.AppWorkspace;
+            label23.Location = new Point(8, 161);
+            label23.Name = "label23";
+            label23.Size = new Size(58, 21);
+            label23.TabIndex = 9;
+            label23.Text = "joined";
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Font = new Font("Century", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label22.Location = new Point(361, 137);
+            label22.Name = "label22";
+            label22.Size = new Size(92, 16);
+            label22.TabIndex = 8;
+            label22.Text = "Administrator";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Century", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label21.Location = new Point(341, 95);
+            label21.Name = "label21";
+            label21.Size = new Size(112, 16);
+            label21.TabIndex = 7;
+            label21.Text = "+1 (555) 000-0000";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Century", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label20.Location = new Point(334, 63);
+            label20.Name = "label20";
+            label20.Size = new Size(122, 16);
+            label20.TabIndex = 6;
+            label20.Text = " admin@venue.com";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Century", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label19.Location = new Point(369, 26);
+            label19.Name = "label19";
+            label19.Size = new Size(84, 16);
+            label19.TabIndex = 5;
+            label19.Text = " Admin User";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new Font("Century", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label18.ForeColor = SystemColors.AppWorkspace;
+            label18.Location = new Point(6, 133);
+            label18.Name = "label18";
+            label18.Size = new Size(45, 21);
+            label18.TabIndex = 4;
+            label18.Text = "Role";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Century", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label17.ForeColor = SystemColors.AppWorkspace;
+            label17.Location = new Point(3, 95);
+            label17.Name = "label17";
+            label17.Size = new Size(97, 21);
+            label17.TabIndex = 3;
+            label17.Text = " Phone No.";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Century", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label16.ForeColor = SystemColors.AppWorkspace;
+            label16.Location = new Point(6, 58);
+            label16.Name = "label16";
+            label16.Size = new Size(61, 21);
+            label16.TabIndex = 2;
+            label16.Text = " Email";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Century", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label15.ForeColor = SystemColors.AppWorkspace;
+            label15.Location = new Point(8, 21);
+            label15.Name = "label15";
+            label15.Size = new Size(93, 21);
+            label15.TabIndex = 1;
+            label15.Text = "Full Name";
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(textBox7);
+            tabPage2.Controls.Add(label27);
+            tabPage2.Controls.Add(textBox4);
+            tabPage2.Controls.Add(label29);
+            tabPage2.Controls.Add(label28);
+            tabPage2.Controls.Add(textBox5);
+            tabPage2.Controls.Add(label26);
+            tabPage2.Controls.Add(textBox2);
+            tabPage2.Controls.Add(label25);
+            tabPage2.Controls.Add(textBox1);
+            tabPage2.Location = new Point(4, 29);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(462, 271);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Edit profile";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // textBox7
+            // 
+            textBox7.BackColor = Color.MistyRose;
+            textBox7.BorderStyle = BorderStyle.FixedSingle;
+            textBox7.Location = new Point(9, 147);
+            textBox7.Margin = new Padding(3, 4, 3, 4);
+            textBox7.Multiline = true;
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(447, 117);
+            textBox7.TabIndex = 23;
+            textBox7.Text = "\r\n\r\n\r\n\r\n\r\n\r\n";
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.ForeColor = Color.Maroon;
+            label27.Location = new Point(3, 123);
+            label27.Name = "label27";
+            label27.Size = new Size(33, 20);
+            label27.TabIndex = 22;
+            label27.Text = "BIO";
+            // 
+            // textBox4
+            // 
+            textBox4.BackColor = Color.MistyRose;
+            textBox4.BorderStyle = BorderStyle.FixedSingle;
+            textBox4.Location = new Point(226, 88);
+            textBox4.Margin = new Padding(3, 4, 3, 4);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(230, 27);
+            textBox4.TabIndex = 21;
+            // 
+            // label29
+            // 
+            label29.AutoSize = true;
+            label29.ForeColor = Color.Maroon;
+            label29.Location = new Point(226, 64);
+            label29.Name = "label29";
+            label29.Size = new Size(105, 20);
+            label29.TabIndex = 20;
+            label29.Text = "Phone number";
+            // 
+            // label28
+            // 
+            label28.AutoSize = true;
+            label28.ForeColor = Color.Maroon;
+            label28.Location = new Point(6, 64);
+            label28.Name = "label28";
+            label28.Size = new Size(52, 20);
+            label28.TabIndex = 16;
+            label28.Text = "E-mail";
+            // 
+            // textBox5
+            // 
+            textBox5.BackColor = Color.MistyRose;
+            textBox5.BorderStyle = BorderStyle.FixedSingle;
+            textBox5.Location = new Point(9, 88);
+            textBox5.Margin = new Padding(3, 4, 3, 4);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(211, 27);
+            textBox5.TabIndex = 14;
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.ForeColor = Color.Maroon;
+            label26.Location = new Point(226, 6);
+            label26.Name = "label26";
+            label26.Size = new Size(76, 20);
+            label26.TabIndex = 12;
+            label26.Text = "Last name";
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = Color.MistyRose;
+            textBox2.BorderStyle = BorderStyle.FixedSingle;
+            textBox2.Location = new Point(226, 30);
+            textBox2.Margin = new Padding(3, 4, 3, 4);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(230, 27);
+            textBox2.TabIndex = 11;
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.ForeColor = Color.Maroon;
+            label25.Location = new Point(6, 6);
+            label25.Name = "label25";
+            label25.Size = new Size(77, 20);
+            label25.TabIndex = 10;
+            label25.Text = "First name";
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.MistyRose;
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Location = new Point(9, 30);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(211, 27);
+            textBox1.TabIndex = 9;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(button3);
+            tabPage3.Controls.Add(label32);
+            tabPage3.Controls.Add(textBox9);
+            tabPage3.Controls.Add(label31);
+            tabPage3.Controls.Add(textBox8);
+            tabPage3.Controls.Add(label30);
+            tabPage3.Controls.Add(textBox6);
+            tabPage3.Location = new Point(4, 29);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(462, 271);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Security";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.ForeColor = Color.Maroon;
+            label32.Location = new Point(3, 171);
+            label32.Name = "label32";
+            label32.Size = new Size(127, 20);
+            label32.TabIndex = 23;
+            label32.Text = "Confirm Password";
+            // 
+            // textBox9
+            // 
+            textBox9.BackColor = Color.MistyRose;
+            textBox9.BorderStyle = BorderStyle.FixedSingle;
+            textBox9.Location = new Point(6, 194);
+            textBox9.Margin = new Padding(3, 4, 3, 4);
+            textBox9.Name = "textBox9";
+            textBox9.Size = new Size(450, 27);
+            textBox9.TabIndex = 22;
+            // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.ForeColor = Color.Maroon;
+            label31.Location = new Point(6, 95);
+            label31.Name = "label31";
+            label31.Size = new Size(104, 20);
+            label31.TabIndex = 21;
+            label31.Text = "New Password";
+            // 
+            // textBox8
+            // 
+            textBox8.BackColor = Color.MistyRose;
+            textBox8.BorderStyle = BorderStyle.FixedSingle;
+            textBox8.Location = new Point(3, 119);
+            textBox8.Margin = new Padding(3, 4, 3, 4);
+            textBox8.Name = "textBox8";
+            textBox8.Size = new Size(450, 27);
+            textBox8.TabIndex = 20;
+            // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.ForeColor = Color.Maroon;
+            label30.Location = new Point(3, 7);
+            label30.Name = "label30";
+            label30.Size = new Size(122, 20);
+            label30.TabIndex = 19;
+            label30.Text = "Current Password";
+            // 
+            // textBox6
+            // 
+            textBox6.BackColor = Color.MistyRose;
+            textBox6.BorderStyle = BorderStyle.FixedSingle;
+            textBox6.Location = new Point(6, 30);
+            textBox6.Margin = new Padding(3, 4, 3, 4);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(450, 27);
+            textBox6.TabIndex = 18;
+            // 
             // label12
             // 
             label12.AutoSize = true;
@@ -375,6 +711,16 @@
             panel7.Size = new Size(217, 56);
             panel7.TabIndex = 8;
             // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Century", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label14.Location = new Point(3, 27);
+            label14.Name = "label14";
+            label14.Size = new Size(21, 16);
+            label14.TabIndex = 3;
+            label14.Text = "34";
+            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -394,6 +740,16 @@
             panel6.Name = "panel6";
             panel6.Size = new Size(217, 56);
             panel6.TabIndex = 7;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Century", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label13.Location = new Point(3, 27);
+            label13.Name = "label13";
+            label13.Size = new Size(14, 16);
+            label13.TabIndex = 3;
+            label13.Text = "8";
             // 
             // label9
             // 
@@ -468,359 +824,16 @@
             label7.Text = "Prefrences";
             label7.Click += label7_Click;
             // 
-            // label13
+            // button3
             // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Century", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label13.Location = new Point(3, 27);
-            label13.Name = "label13";
-            label13.Size = new Size(14, 16);
-            label13.TabIndex = 3;
-            label13.Text = "8";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Century", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label14.Location = new Point(3, 27);
-            label14.Name = "label14";
-            label14.Size = new Size(21, 16);
-            label14.TabIndex = 3;
-            label14.Text = "34";
-            // 
-            // tabControl1
-            // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Controls.Add(tabPage3);
-            tabControl1.Location = new Point(22, 144);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(470, 304);
-            tabControl1.TabIndex = 15;
-            // 
-            // tabPage1
-            // 
-            tabPage1.Controls.Add(label24);
-            tabPage1.Controls.Add(label23);
-            tabPage1.Controls.Add(label22);
-            tabPage1.Controls.Add(label21);
-            tabPage1.Controls.Add(label20);
-            tabPage1.Controls.Add(label19);
-            tabPage1.Controls.Add(label18);
-            tabPage1.Controls.Add(label17);
-            tabPage1.Controls.Add(label16);
-            tabPage1.Controls.Add(label15);
-            tabPage1.Location = new Point(4, 29);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(462, 271);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "information";
-            tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            tabPage2.Controls.Add(textBox7);
-            tabPage2.Controls.Add(label27);
-            tabPage2.Controls.Add(textBox4);
-            tabPage2.Controls.Add(label29);
-            tabPage2.Controls.Add(label28);
-            tabPage2.Controls.Add(textBox5);
-            tabPage2.Controls.Add(label26);
-            tabPage2.Controls.Add(textBox2);
-            tabPage2.Controls.Add(label25);
-            tabPage2.Controls.Add(textBox1);
-            tabPage2.Location = new Point(4, 29);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(462, 271);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Edit profile";
-            tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            tabPage3.Controls.Add(label32);
-            tabPage3.Controls.Add(textBox9);
-            tabPage3.Controls.Add(label31);
-            tabPage3.Controls.Add(textBox8);
-            tabPage3.Controls.Add(label30);
-            tabPage3.Controls.Add(textBox6);
-            tabPage3.Location = new Point(4, 29);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(462, 271);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "Security";
-            tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Century", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label15.ForeColor = SystemColors.AppWorkspace;
-            label15.Location = new Point(8, 21);
-            label15.Name = "label15";
-            label15.Size = new Size(93, 21);
-            label15.TabIndex = 1;
-            label15.Text = "Full Name";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Century", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label16.ForeColor = SystemColors.AppWorkspace;
-            label16.Location = new Point(6, 58);
-            label16.Name = "label16";
-            label16.Size = new Size(61, 21);
-            label16.TabIndex = 2;
-            label16.Text = " Email";
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Font = new Font("Century", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label17.ForeColor = SystemColors.AppWorkspace;
-            label17.Location = new Point(3, 95);
-            label17.Name = "label17";
-            label17.Size = new Size(97, 21);
-            label17.TabIndex = 3;
-            label17.Text = " Phone No.";
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Font = new Font("Century", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label18.ForeColor = SystemColors.AppWorkspace;
-            label18.Location = new Point(6, 133);
-            label18.Name = "label18";
-            label18.Size = new Size(45, 21);
-            label18.TabIndex = 4;
-            label18.Text = "Role";
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Font = new Font("Century", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label19.Location = new Point(369, 26);
-            label19.Name = "label19";
-            label19.Size = new Size(84, 16);
-            label19.TabIndex = 5;
-            label19.Text = " Admin User";
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Font = new Font("Century", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label20.Location = new Point(334, 63);
-            label20.Name = "label20";
-            label20.Size = new Size(122, 16);
-            label20.TabIndex = 6;
-            label20.Text = " admin@venue.com";
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Font = new Font("Century", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label21.Location = new Point(341, 95);
-            label21.Name = "label21";
-            label21.Size = new Size(112, 16);
-            label21.TabIndex = 7;
-            label21.Text = "+1 (555) 000-0000";
-            // 
-            // label22
-            // 
-            label22.AutoSize = true;
-            label22.Font = new Font("Century", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label22.Location = new Point(361, 137);
-            label22.Name = "label22";
-            label22.Size = new Size(92, 16);
-            label22.TabIndex = 8;
-            label22.Text = "Administrator";
-            // 
-            // label23
-            // 
-            label23.AutoSize = true;
-            label23.Font = new Font("Century", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label23.ForeColor = SystemColors.AppWorkspace;
-            label23.Location = new Point(8, 161);
-            label23.Name = "label23";
-            label23.Size = new Size(58, 21);
-            label23.TabIndex = 9;
-            label23.Text = "joined";
-            // 
-            // label24
-            // 
-            label24.AutoSize = true;
-            label24.Font = new Font("Century", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label24.Location = new Point(361, 166);
-            label24.Name = "label24";
-            label24.Size = new Size(62, 16);
-            label24.TabIndex = 10;
-            label24.Text = " jan 2024";
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.ForeColor = Color.Maroon;
-            label25.Location = new Point(6, 6);
-            label25.Name = "label25";
-            label25.Size = new Size(77, 20);
-            label25.TabIndex = 10;
-            label25.Text = "First name";
-            // 
-            // textBox1
-            // 
-            textBox1.BackColor = Color.MistyRose;
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(9, 30);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(211, 27);
-            textBox1.TabIndex = 9;
-            // 
-            // label26
-            // 
-            label26.AutoSize = true;
-            label26.ForeColor = Color.Maroon;
-            label26.Location = new Point(226, 6);
-            label26.Name = "label26";
-            label26.Size = new Size(76, 20);
-            label26.TabIndex = 12;
-            label26.Text = "Last name";
-            // 
-            // textBox2
-            // 
-            textBox2.BackColor = Color.MistyRose;
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(226, 30);
-            textBox2.Margin = new Padding(3, 4, 3, 4);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(230, 27);
-            textBox2.TabIndex = 11;
-            // 
-            // label28
-            // 
-            label28.AutoSize = true;
-            label28.ForeColor = Color.Maroon;
-            label28.Location = new Point(6, 64);
-            label28.Name = "label28";
-            label28.Size = new Size(52, 20);
-            label28.TabIndex = 16;
-            label28.Text = "E-mail";
-            // 
-            // textBox5
-            // 
-            textBox5.BackColor = Color.MistyRose;
-            textBox5.BorderStyle = BorderStyle.FixedSingle;
-            textBox5.Location = new Point(9, 88);
-            textBox5.Margin = new Padding(3, 4, 3, 4);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(211, 27);
-            textBox5.TabIndex = 14;
-            // 
-            // label29
-            // 
-            label29.AutoSize = true;
-            label29.ForeColor = Color.Maroon;
-            label29.Location = new Point(226, 64);
-            label29.Name = "label29";
-            label29.Size = new Size(105, 20);
-            label29.TabIndex = 20;
-            label29.Text = "Phone number";
-            // 
-            // label30
-            // 
-            label30.AutoSize = true;
-            label30.ForeColor = Color.Maroon;
-            label30.Location = new Point(3, 7);
-            label30.Name = "label30";
-            label30.Size = new Size(122, 20);
-            label30.TabIndex = 19;
-            label30.Text = "Current Password";
-            // 
-            // textBox6
-            // 
-            textBox6.BackColor = Color.MistyRose;
-            textBox6.BorderStyle = BorderStyle.FixedSingle;
-            textBox6.Location = new Point(6, 30);
-            textBox6.Margin = new Padding(3, 4, 3, 4);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(450, 27);
-            textBox6.TabIndex = 18;
-            // 
-            // textBox4
-            // 
-            textBox4.BackColor = Color.MistyRose;
-            textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Location = new Point(226, 88);
-            textBox4.Margin = new Padding(3, 4, 3, 4);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(230, 27);
-            textBox4.TabIndex = 21;
-            // 
-            // label27
-            // 
-            label27.AutoSize = true;
-            label27.ForeColor = Color.Maroon;
-            label27.Location = new Point(3, 123);
-            label27.Name = "label27";
-            label27.Size = new Size(33, 20);
-            label27.TabIndex = 22;
-            label27.Text = "BIO";
-            // 
-            // textBox7
-            // 
-            textBox7.BackColor = Color.MistyRose;
-            textBox7.BorderStyle = BorderStyle.FixedSingle;
-            textBox7.Location = new Point(9, 147);
-            textBox7.Margin = new Padding(3, 4, 3, 4);
-            textBox7.Multiline = true;
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(447, 117);
-            textBox7.TabIndex = 23;
-            textBox7.Text = "\r\n\r\n\r\n\r\n\r\n\r\n";
-            // 
-            // label31
-            // 
-            label31.AutoSize = true;
-            label31.ForeColor = Color.Maroon;
-            label31.Location = new Point(6, 95);
-            label31.Name = "label31";
-            label31.Size = new Size(104, 20);
-            label31.TabIndex = 21;
-            label31.Text = "New Password";
-            // 
-            // textBox8
-            // 
-            textBox8.BackColor = Color.MistyRose;
-            textBox8.BorderStyle = BorderStyle.FixedSingle;
-            textBox8.Location = new Point(3, 119);
-            textBox8.Margin = new Padding(3, 4, 3, 4);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(450, 27);
-            textBox8.TabIndex = 20;
-            // 
-            // label32
-            // 
-            label32.AutoSize = true;
-            label32.ForeColor = Color.Maroon;
-            label32.Location = new Point(3, 171);
-            label32.Name = "label32";
-            label32.Size = new Size(127, 20);
-            label32.TabIndex = 23;
-            label32.Text = "Confirm Password";
-            // 
-            // textBox9
-            // 
-            textBox9.BackColor = Color.MistyRose;
-            textBox9.BorderStyle = BorderStyle.FixedSingle;
-            textBox9.Location = new Point(6, 194);
-            textBox9.Margin = new Padding(3, 4, 3, 4);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(450, 27);
-            textBox9.TabIndex = 22;
+            button3.BackColor = Color.LightCoral;
+            button3.ForeColor = Color.White;
+            button3.Location = new Point(118, 228);
+            button3.Name = "button3";
+            button3.Size = new Size(169, 29);
+            button3.TabIndex = 24;
+            button3.Text = "Update Password";
+            button3.UseVisualStyleBackColor = false;
             // 
             // Profile
             // 
@@ -841,6 +854,13 @@
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel7.ResumeLayout(false);
@@ -849,13 +869,6 @@
             panel6.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
-            tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
-            tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
-            tabPage3.ResumeLayout(false);
-            tabPage3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -923,5 +936,6 @@
         private TextBox textBox6;
         private Label label32;
         private TextBox textBox9;
+        private Button button3;
     }
 }
