@@ -1,3 +1,4 @@
+using Loginmenu;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using App = System.Windows.Forms.Application;
@@ -27,7 +28,7 @@ namespace Venue.UI
             Services = await services.BuilderAsync(configuration);
 
             ApplicationConfiguration.Initialize();
-            App.Run(Services.GetRequiredService<Form1>());
+            App.Run(Services.GetRequiredService<Login_menu>());
         }
     }
 }

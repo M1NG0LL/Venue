@@ -4,5 +4,26 @@
     <Compile Update="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\explorepage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Login_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\mainscreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\myvenues.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Registering.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

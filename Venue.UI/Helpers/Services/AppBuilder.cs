@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Loginmenu;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Venue.Infrastructure;
@@ -32,6 +33,9 @@ namespace Venue.UI
 
             #region UI Forms
             services.AddTransient<Form1>();
+            services.AddTransient<Login_menu>();
+            services.AddTransient<mainscreen>();
+            services.AddTransient<Registering>();
             #endregion
 
             return services;
