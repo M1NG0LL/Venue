@@ -80,7 +80,6 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(216, 27);
             textBox2.TabIndex = 3;
-            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // checkBox1
             // 
@@ -118,7 +117,6 @@
             button2.TabIndex = 6;
             button2.Text = "Register";
             button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click_1;
             // 
             // label3
             // 

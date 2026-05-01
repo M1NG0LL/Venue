@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Venue.Application.Services.Account;
+using Venue.UI;
 
 namespace Loginmenu
 {
@@ -32,20 +35,34 @@ namespace Loginmenu
             this.Hide();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
+            var _userservice = Program.Services.GetService<IUserService>();
 
-        }
+            if (_userservice == null)
+            {
+                MessageBox.Show("User service is not available.");
+                return;
+            }
 
-        private void button2_Click_1(object sender, EventArgs e)
-        {
+            var email = textBox1.Text;
+            var password = textBox2.Text;
 
-        }
+            var response = await _userservice.LoginAsync(new Venue.Application.Dto.User.LoginDto()
+            {
+                UserNameOrEmail = email,
+                Password = password
+            });
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+            if (!response.IsSuccess)
+            {
+                MessageBox.Show(response.Message);
+                return;
+            }
+
             var mainScreenForm = new mainscreen();
             mainScreenForm.Show();
+
             this.Hide();
         }
     }

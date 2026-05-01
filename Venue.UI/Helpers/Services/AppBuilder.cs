@@ -32,7 +32,6 @@ namespace Venue.UI
             services.AddInfrastructureScopes(configuration);
 
             #region UI Forms
-            services.AddTransient<Form1>();
             services.AddTransient<Login_menu>();
             services.AddTransient<mainscreen>();
             services.AddTransient<Registering>();

@@ -7,46 +7,25 @@ namespace Venue.Infrastructure.Repositories
 {
     public class CurrentUserService : ICurrentUserService
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private CurrentUser? _currentUser;
 
-        public CurrentUserService(IHttpContextAccessor httpContextAccessor)
-        {
-            _httpContextAccessor = httpContextAccessor;
-        }
+        public Guid? UserId => _currentUser?.Id;
 
-        private string? _userId =>
-            _httpContextAccessor.HttpContext?
-            .User?
-            .FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?
-            .Value;
-
-        Guid? ICurrentUserService.UserId => string.IsNullOrEmpty(_userId) ? null : Guid.Parse(_userId);
-
-        private string? Role =>
-            _httpContextAccessor.HttpContext?
-            .User?
-            .FindFirst(System.Security.Claims.ClaimTypes.Role)?
-            .Value;
-
-        UserRole ICurrentUserService.Role => string.IsNullOrEmpty(Role) ? UserRole.User : Enum.Parse<UserRole>(Role);
-
-        private string? _email =>
-            _httpContextAccessor.HttpContext?
-            .User?
-            .FindFirst(System.Security.Claims.ClaimTypes.Email)?
-            .Value;
+        public UserRole Role => _currentUser?.UserRole ?? UserRole.User;
 
         public CurrentUser? GetCurrentUser()
         {
-            if (_userId == null)
-                return null;
+            return _currentUser;
+        }
 
-            return new CurrentUser()
-            {
-                Id = Guid.Parse(_userId),
-                Email = _email,
-                UserRole = string.IsNullOrEmpty(Role) ? UserRole.User : Enum.Parse<UserRole>(Role)
-            };
+        public void SetCurrentUser(CurrentUser user)
+        {
+            _currentUser = user;
+        }
+
+        public void Logout()
+        {
+            _currentUser = null;
         }
     }
 }

@@ -9,5 +9,7 @@ namespace Venue.Domain.Interfaces
         UserRole Role { get; }
 
         CurrentUser? GetCurrentUser();
+        void SetCurrentUser(CurrentUser user);
+        void Logout();
     }
 }

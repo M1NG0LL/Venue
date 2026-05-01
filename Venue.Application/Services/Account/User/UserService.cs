@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Venue.Application.Common;
 using Venue.Application.Dto.User;
+using Venue.Domain.Common;
 using Venue.Domain.Enums;
 using Venue.Domain.Interfaces;
 
@@ -10,16 +11,12 @@ namespace Venue.Application.Services.Account
 {
     public class UserService : IUserService
     {
-        private readonly Logger<UserService> logger;
         private readonly UserManager<Domain.Common.User> _userManager;
-        private readonly SignInManager<Domain.Common.User> _signInManager;
         private readonly ICurrentUserService _currentUserService;
 
-        public UserService(Logger<UserService> logger, UserManager<Domain.Common.User> userManager, SignInManager<Domain.Common.User> signInManager, ICurrentUserService currentUserService)
+        public UserService(UserManager<User> userManager, ICurrentUserService currentUserService)
         {
-            this.logger = logger;
             _userManager = userManager;
-            _signInManager = signInManager;
             _currentUserService = currentUserService;
         }
 
@@ -57,23 +54,22 @@ namespace Venue.Application.Services.Account
             if (user == null)
                 return ResponseBase.Failure("Invalid credentials");
 
-            var result = await _signInManager.PasswordSignInAsync(
-                user.UserName,
-                dto.Password,
-                isPersistent: true,
-                lockoutOnFailure: true
-            );
+            var valid = await _userManager.CheckPasswordAsync(user, dto.Password);
 
-            if (!result.Succeeded)
+            if (!valid)
+                return ResponseBase.Failure("Wrong password");
+
+            var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
+
+            if (role == null)
+                return ResponseBase.Failure("User has no assigned role");
+
+            _currentUserService.SetCurrentUser(new CurrentUser()
             {
-                if (result.IsLockedOut)
-                    return ResponseBase.Failure("Account is locked");
-
-                if (result.IsNotAllowed)
-                    return ResponseBase.Failure("Login not allowed");
-
-                return ResponseBase.Failure("Invalid credentials");
-            }
+                Id = user.Id,
+                Email = user.Email,
+                UserRole = Enum.Parse<UserRole>(role!)
+            });
 
             return ResponseBase.Success("Login successful");
         }
@@ -103,7 +99,7 @@ namespace Venue.Application.Services.Account
             if (_currentUserService.UserId == null)
                 return ResponseBase.Failure("No user is currently logged in");
 
-            await _signInManager.SignOutAsync();
+            _currentUserService.Logout();
 
             return ResponseBase.Success("Logged out successfully");
         }

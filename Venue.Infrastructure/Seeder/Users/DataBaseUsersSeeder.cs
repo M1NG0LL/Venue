@@ -71,7 +71,7 @@ namespace Venue.Infrastructure.Seeder.Users
                     EmailConfirmed = true,
                 };
 
-                var result = await _userManager.CreateAsync(adminUser, "admin@venue.com");
+                var result = await _userManager.CreateAsync(adminUser, "Admin@123");
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(adminUser, UserRole.Admin.ToString());

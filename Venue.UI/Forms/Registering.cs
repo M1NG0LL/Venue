@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Venue.Application.Dto.User;
+using Venue.Application.Services.Account;
+using Venue.UI;
+using Venue.UI.Helpers;
 
 namespace Loginmenu
 {
@@ -15,45 +11,6 @@ namespace Loginmenu
         public Registering()
         {
             InitializeComponent();
-            textBox4.UseSystemPasswordChar = true;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
-        }
-
-        private void Registering_Load(object sender, EventArgs e)
-        {
-            comboBox1.Items.Clear();
-            comboBox1.Items.Add("Venue Owner");
-            comboBox1.Items.Add("Geust/Couple");
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -61,15 +18,40 @@ namespace Loginmenu
             textBox4.UseSystemPasswordChar = !checkBox1.Checked;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
+            var _userservice = Program.Services.GetService<IUserService>();
+            if (_userservice == null)
+            {
+                MessageBox.Show("User service is not available.");
+                return;
+            }
 
+            var dto = new RegisterDto()
+            {
+                UserName = textBox1.Text,
+                Email = textBox3.Text,
+                Password = textBox4.Text,
+            };
+
+            var response = await _userservice.RegisterAsync(dto);
+
+            if (response.IsSuccess)
+            {
+                var loginForm = new Login_menu();
+                loginForm.Show();
+                this.Hide();
+            }
+            else
+            {
+                ErrorShower.ShowError(response);
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            var mainScreenForm = new mainscreen();
-            mainScreenForm.Show();
+            var loginForm = new Login_menu();
+            loginForm.Show();
             this.Hide();
         }
     }
