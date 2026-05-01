@@ -7,7 +7,6 @@ using Venue.Domain.Interfaces;
 using Venue.Infrastructure.DbContext;
 using Venue.Infrastructure.Repositories;
 using Venue.Infrastructure.Seeder;
-using Venue.Infrastructure.Seeder.Users;
 
 namespace Venue.Infrastructure
 {
@@ -33,7 +32,6 @@ namespace Venue.Infrastructure
             #endregion
 
             #region Database Seeders
-            services.AddScoped<DataBaseUsersSeeder>();
             services.AddScoped<DataBaseSeeder>();
             #endregion
 

@@ -35,7 +35,6 @@
             linkLabel4 = new LinkLabel();
             linkLabel3 = new LinkLabel();
             label4 = new Label();
-            linkLabel2 = new LinkLabel();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
@@ -99,8 +98,6 @@
             pictureBox8 = new PictureBox();
             label39 = new Label();
             panel2 = new Panel();
-            button2 = new Button();
-            button1 = new Button();
             label6 = new Label();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
@@ -130,7 +127,6 @@
             panel1.Controls.Add(linkLabel4);
             panel1.Controls.Add(linkLabel3);
             panel1.Controls.Add(label4);
-            panel1.Controls.Add(linkLabel2);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
@@ -149,7 +145,7 @@
             linkLabel5.ImageAlign = ContentAlignment.TopLeft;
             linkLabel5.LinkBehavior = LinkBehavior.NeverUnderline;
             linkLabel5.LinkColor = Color.White;
-            linkLabel5.Location = new Point(-1, 414);
+            linkLabel5.Location = new Point(-1, 348);
             linkLabel5.Name = "linkLabel5";
             linkLabel5.Size = new Size(133, 39);
             linkLabel5.TabIndex = 9;
@@ -164,7 +160,7 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.ForeColor = Color.Silver;
-            label5.Location = new Point(3, 376);
+            label5.Location = new Point(3, 310);
             label5.Name = "label5";
             label5.Size = new Size(77, 20);
             label5.TabIndex = 8;
@@ -177,7 +173,7 @@
             linkLabel4.ImageAlign = ContentAlignment.TopLeft;
             linkLabel4.LinkBehavior = LinkBehavior.NeverUnderline;
             linkLabel4.LinkColor = Color.White;
-            linkLabel4.Location = new Point(1, 321);
+            linkLabel4.Location = new Point(1, 255);
             linkLabel4.Name = "linkLabel4";
             linkLabel4.Size = new Size(90, 39);
             linkLabel4.TabIndex = 7;
@@ -194,7 +190,7 @@
             linkLabel3.ImageAlign = ContentAlignment.TopLeft;
             linkLabel3.LinkBehavior = LinkBehavior.NeverUnderline;
             linkLabel3.LinkColor = Color.White;
-            linkLabel3.Location = new Point(3, 268);
+            linkLabel3.Location = new Point(3, 202);
             linkLabel3.Name = "linkLabel3";
             linkLabel3.Size = new Size(133, 39);
             linkLabel3.TabIndex = 6;
@@ -209,27 +205,11 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.ForeColor = Color.Silver;
-            label4.Location = new Point(3, 234);
+            label4.Location = new Point(3, 168);
             label4.Name = "label4";
             label4.Size = new Size(71, 20);
             label4.TabIndex = 5;
             label4.Text = "MANAGE";
-            // 
-            // linkLabel2
-            // 
-            linkLabel2.ActiveLinkColor = Color.IndianRed;
-            linkLabel2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            linkLabel2.ImageAlign = ContentAlignment.TopLeft;
-            linkLabel2.LinkBehavior = LinkBehavior.NeverUnderline;
-            linkLabel2.LinkColor = Color.White;
-            linkLabel2.Location = new Point(-1, 168);
-            linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(190, 34);
-            linkLabel2.TabIndex = 4;
-            linkLabel2.TabStop = true;
-            linkLabel2.Text = "🔍explore Venues";
-            linkLabel2.TextAlign = ContentAlignment.TopCenter;
-            linkLabel2.VisitedLinkColor = Color.White;
             // 
             // label3
             // 
@@ -245,11 +225,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Century", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
             label2.Location = new Point(17, 5);
             label2.Name = "label2";
-            label2.Size = new Size(60, 21);
+            label2.Size = new Size(56, 20);
             label2.TabIndex = 2;
             label2.Text = "Venuè";
             // 
@@ -890,8 +870,6 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
-            panel2.Controls.Add(button2);
-            panel2.Controls.Add(button1);
             panel2.Controls.Add(label6);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(196, 0);
@@ -900,36 +878,13 @@
             panel2.Size = new Size(1042, 86);
             panel2.TabIndex = 12;
             // 
-            // button2
-            // 
-            button2.BackColor = Color.IndianRed;
-            button2.BackgroundImageLayout = ImageLayout.None;
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(930, 27);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(103, 38);
-            button2.TabIndex = 2;
-            button2.Text = "Add venue";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(795, 29);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(129, 35);
-            button1.TabIndex = 1;
-            button1.Text = "+New booking";
-            button1.UseVisualStyleBackColor = true;
-            // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Century", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.Location = new Point(37, 27);
             label6.Name = "label6";
-            label6.Size = new Size(176, 28);
+            label6.Size = new Size(179, 29);
             label6.TabIndex = 0;
             label6.Text = "Explore venues";
             // 
@@ -993,7 +948,6 @@
         private LinkLabel linkLabel4;
         private LinkLabel linkLabel3;
         private Label label4;
-        private LinkLabel linkLabel2;
         private Label label3;
         private Label label2;
         private Label label1;
@@ -1057,8 +1011,6 @@
         private PictureBox pictureBox8;
         private Label label39;
         private Panel panel2;
-        private Button button2;
-        private Button button1;
         private Label label6;
     }
 }

@@ -5,6 +5,6 @@ namespace Venue.Application.Services.Account
 {
     public interface IUserPasswordService
     {
-        Task<ResponseBase> ChangePasswordAsync(ChangePasswordRequest request, CancellationToken cancellationToken);
+        Task<ResponseBase> ChangePasswordAsync(ChangePasswordRequest request, CancellationToken cancellationToken = default);
     }
 }

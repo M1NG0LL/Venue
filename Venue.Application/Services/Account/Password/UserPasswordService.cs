@@ -10,14 +10,12 @@ namespace Venue.Application.Services.Account
 {
     public class UserPasswordService : IUserPasswordService
     {
-        private readonly Logger<UserPasswordService> logger;
         private readonly UserManager<Domain.Common.User> _userManager;
         private readonly SignInManager<Domain.Common.User> _signInManager;
         private readonly ICurrentUserService _currentUserService;
 
-        public UserPasswordService(Logger<UserPasswordService> logger, UserManager<Domain.Common.User> userManager, SignInManager<Domain.Common.User> signInManager, ICurrentUserService currentUserService)
+        public UserPasswordService(UserManager<User> userManager, SignInManager<User> signInManager, ICurrentUserService currentUserService)
         {
-            this.logger = logger;
             _userManager = userManager;
             _signInManager = signInManager;
             _currentUserService = currentUserService;
@@ -35,7 +33,7 @@ namespace Venue.Application.Services.Account
 
             var result = await _userManager.ChangePasswordAsync(user, request.CurrentPassword, request.NewPassword);
             if (!result.Succeeded)
-                return ResponseBase.Failure("Password change failed");
+                return ResponseBase.Failure("Password change failed", result.Errors.Select(x => x.Description).ToList());
 
             return ResponseBase.Success("Password changed successfully");
         }

@@ -91,6 +91,7 @@ namespace Venue.Application.Services.Account
                 UserName = user.UserName!,
                 Email = user.Email!,
                 UserRole = _currentUserService.Role,
+                JoinedAt = user.CreatedAt
             });
         }
 

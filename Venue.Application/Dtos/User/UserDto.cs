@@ -8,5 +8,6 @@ namespace Venue.Application.Dto.User
         public required string UserName { get; set; }
         public required string Email { get; set; }
         public required UserRole UserRole { get; set; }
+        public DateTime JoinedAt { get; set; } = DateTime.UtcNow;
     }
 }
