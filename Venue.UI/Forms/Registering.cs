@@ -27,11 +27,39 @@ namespace Loginmenu
                 return;
             }
 
+            string username = textBox1.Text.Trim();
+            string email = textBox3.Text.Trim();
+            string password = textBox4.Text;
+
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                MessageBox.Show("Username is required.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                MessageBox.Show("Email is required.");
+                return;
+            }
+
+            if (!email.Contains("@") || !email.Contains("."))
+            {
+                MessageBox.Show("Invalid email format.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Password is required.");
+                return;
+            }
+
             var dto = new RegisterDto()
             {
-                UserName = textBox1.Text,
-                Email = textBox3.Text,
-                Password = textBox4.Text,
+                UserName = username,
+                Email = email,
+                Password = password,
             };
 
             var response = await _userservice.RegisterAsync(dto);

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Loginmenu;
+using Microsoft.Extensions.DependencyInjection;
 using Venue.Application.Dtos.User;
 using Venue.Application.Services.Account;
 using Venue.Domain.Interfaces;
@@ -120,6 +121,27 @@ namespace Venue.UI.Forms
             {
                 ErrorShower.ShowError(response);
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var homepage = new mainscreen();
+            homepage.Show();
+            this.Hide();
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            var response = await _userService.LogoutAsync();
+            if (!response.IsSuccess)
+            {
+                ErrorShower.ShowError(response);
+                return;
+            }
+
+            var loginForm = new Login();
+            loginForm.ShowDialog();
+            this.Hide();
         }
     }
 }

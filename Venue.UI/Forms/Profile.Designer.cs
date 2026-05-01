@@ -70,6 +70,7 @@
             textBox2 = new TextBox();
             label25 = new Label();
             textBox1 = new TextBox();
+            button1 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -138,6 +139,7 @@
             linkLabel4.TabStop = true;
             linkLabel4.Text = "👥users";
             linkLabel4.TextAlign = ContentAlignment.TopCenter;
+            linkLabel4.Visible = false;
             linkLabel4.VisitedLinkColor = Color.White;
             linkLabel4.LinkClicked += linkLabel4_LinkClicked;
             // 
@@ -155,6 +157,7 @@
             linkLabel3.TabStop = true;
             linkLabel3.Text = "🏛️my venues";
             linkLabel3.TextAlign = ContentAlignment.TopCenter;
+            linkLabel3.Visible = false;
             linkLabel3.VisitedLinkColor = Color.White;
             linkLabel3.LinkClicked += linkLabel3_LinkClicked;
             // 
@@ -218,10 +221,12 @@
             linkLabel1.Text = "💒home";
             linkLabel1.TextAlign = ContentAlignment.TopCenter;
             linkLabel1.VisitedLinkColor = Color.White;
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(button1);
             panel2.Controls.Add(label6);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(196, 0);
@@ -565,6 +570,18 @@
             textBox1.Size = new Size(211, 27);
             textBox1.TabIndex = 9;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.LightCoral;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(920, 31);
+            button1.Name = "button1";
+            button1.Size = new Size(116, 29);
+            button1.TabIndex = 25;
+            button1.Text = "log out";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // Profile
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -634,5 +651,6 @@
         private Label label20;
         private Label label19;
         private Label label15;
+        private Button button1;
     }
 }

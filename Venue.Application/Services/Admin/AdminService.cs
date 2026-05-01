@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Venue.Application.Common;
 using Venue.Application.Dtos.Admin;
+using Venue.Domain.Enums;
 using Venue.Domain.Interfaces;
 
 namespace Venue.Application.Services.Admin
 {
-
     public class AdminService : IAdminService
     {
         private readonly UserManager<Domain.Common.User> _userManager;
@@ -39,7 +39,13 @@ namespace Venue.Application.Services.Admin
                pageSize: dto.PageSize,
                data: new AdminUserListDto()
                {
-                   Users = _mapper.Map<List<AdminUserDto>>(pagedUsers.Data)
+                   Users = pagedUsers.Data.Select(x => new AdminUserDto()
+                   {
+                       Id = x.Id,
+                       UserName = x.UserName!,
+                       Email = x.Email!,
+                       JoinedAt = x.CreatedAt,
+                   }).ToList(),
                },
                totalCount: pagedUsers.TotalRecords,
                message: "Users retrieved successfully."
