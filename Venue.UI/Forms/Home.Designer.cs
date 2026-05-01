@@ -236,7 +236,6 @@
             linkLabel1.Text = "💒home";
             linkLabel1.TextAlign = ContentAlignment.TopCenter;
             linkLabel1.VisitedLinkColor = Color.White;
-            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
             // panel3
             // 
@@ -260,7 +259,6 @@
             label10.Size = new Size(118, 40);
             label10.TabIndex = 4;
             label10.Text = "";
-            label10.Click += label10_Click;
             // 
             // label9
             // 
@@ -597,7 +595,6 @@
             label30.Size = new Size(108, 20);
             label30.TabIndex = 1;
             label30.Text = "";
-            label30.Click += label30_Click;
             // 
             // pictureBox6
             // 

@@ -47,7 +47,8 @@ namespace Venue.UI.Forms
             var response = await _venueService.SearchAsync(new VenueSearchDto
             {
                 PageNumber = 1,
-                PageSize = 6
+                PageSize = 6,
+                SortByType = Application.Common.SortByType.Descending
             });
 
             if (!response.IsSuccess || response.Data == null)
@@ -77,6 +78,10 @@ namespace Venue.UI.Forms
                 }
 
                 var venue = venues[i];
+
+                cards[i].Panel.Tag = venue.Id;
+                cards[i].Panel.Click += VenueCard_Click!;
+
                 cards[i].Panel.Visible = true;
                 cards[i].Name.Text = venue.Name;
                 cards[i].Description.Text = venue.Description;
@@ -94,6 +99,16 @@ namespace Venue.UI.Forms
                     cards[i].Picture.Image = null;
                     cards[i].Picture.Visible = false;
                 }
+            }
+        }
+
+        private void VenueCard_Click(object sender, EventArgs e)
+        {
+            if (sender is Panel panel && panel.Tag is Guid venueId)
+            {
+                var venueDetails = new VenueDetails(venueId);
+                venueDetails.Show();
+                this.Hide();
             }
         }
 
@@ -120,31 +135,6 @@ namespace Venue.UI.Forms
                 card.Picture.Image = null;
                 card.Picture.Visible = false;
             }
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label30_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

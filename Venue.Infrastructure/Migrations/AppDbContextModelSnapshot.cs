@@ -265,9 +265,7 @@ namespace Venue.Infrastructure.Migrations
 
                     b.HasIndex("UpdatedById");
 
-                    b.HasIndex("VenueId", "CreatedById")
-                        .IsUnique()
-                        .HasFilter("[CreatedById] IS NOT NULL");
+                    b.HasIndex("VenueId");
 
                     b.ToTable("Reviews", (string)null);
                 });
@@ -395,29 +393,6 @@ namespace Venue.Infrastructure.Migrations
                         .WithMany()
                         .HasForeignKey("UpdatedById");
 
-                    b.OwnsOne("Venue.Domain.Entities.VenueConfiguration", "Info", b1 =>
-                        {
-                            b1.Property<Guid>("VenueEntityId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<string>("AvailableDays")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<decimal>("PricePerEvent")
-                                .HasColumnType("decimal(18,2)");
-
-                            b1.Property<int>("SeatingCapacity")
-                                .HasColumnType("int");
-
-                            b1.HasKey("VenueEntityId");
-
-                            b1.ToTable("Venues");
-
-                            b1.WithOwner()
-                                .HasForeignKey("VenueEntityId");
-                        });
-
                     b.OwnsOne("Venue.Domain.Entities.VenueContactInfo", "ContactInfo", b1 =>
                         {
                             b1.Property<Guid>("VenueEntityId")
@@ -443,7 +418,30 @@ namespace Venue.Infrastructure.Migrations
 
                             b1.HasKey("VenueEntityId");
 
-                            b1.ToTable("Venues");
+                            b1.ToTable("Venues", (string)null);
+
+                            b1.WithOwner()
+                                .HasForeignKey("VenueEntityId");
+                        });
+
+                    b.OwnsOne("Venue.Domain.Entities.VenueConfiguration", "Info", b1 =>
+                        {
+                            b1.Property<Guid>("VenueEntityId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<string>("AvailableDays")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<decimal>("PricePerEvent")
+                                .HasColumnType("decimal(18,2)");
+
+                            b1.Property<int>("SeatingCapacity")
+                                .HasColumnType("int");
+
+                            b1.HasKey("VenueEntityId");
+
+                            b1.ToTable("Venues", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("VenueEntityId");

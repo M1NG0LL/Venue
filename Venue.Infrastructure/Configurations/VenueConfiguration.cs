@@ -58,6 +58,11 @@ namespace Venue.Infrastructure.Configurations
                               .ToList()
                     );
             });
+
+            builder.HasMany(v => v.Reviews)
+                .WithOne(r => r.Venue)
+                .HasForeignKey(r => r.VenueId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

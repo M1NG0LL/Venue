@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Venue.Application;
@@ -17,7 +16,6 @@ namespace Venue.Infrastructure
             #region Singleton Services
             services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddSingleton<IPagination, Pagination>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             #endregion
 
             var connectionString = configuration.GetConnectionString("Default")

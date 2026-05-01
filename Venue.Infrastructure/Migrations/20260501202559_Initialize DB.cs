@@ -280,11 +280,9 @@ namespace Venue.Infrastructure.Migrations
                 column: "UpdatedById");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews_VenueId_CreatedById",
+                name: "IX_Reviews_VenueId",
                 table: "Reviews",
-                columns: new[] { "VenueId", "CreatedById" },
-                unique: true,
-                filter: "[CreatedById] IS NOT NULL");
+                column: "VenueId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Venues_CreatedById",

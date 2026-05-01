@@ -13,7 +13,7 @@ using Venue.Infrastructure.DbContext;
 namespace Venue.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260413145312_Initialize DB")]
+    [Migration("20260501202559_Initialize DB")]
     partial class InitializeDB
     {
         /// <inheritdoc />
@@ -268,9 +268,7 @@ namespace Venue.Infrastructure.Migrations
 
                     b.HasIndex("UpdatedById");
 
-                    b.HasIndex("VenueId", "CreatedById")
-                        .IsUnique()
-                        .HasFilter("[CreatedById] IS NOT NULL");
+                    b.HasIndex("VenueId");
 
                     b.ToTable("Reviews", (string)null);
                 });

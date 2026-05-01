@@ -26,7 +26,7 @@ namespace Venue.Application.Services.Review
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<ResponseBase> CreateAsync(ReviewDto dto, CancellationToken cancellationToken = default)
+        public async Task<ResponseBase> CreateAsync(CreateReviewDto dto, CancellationToken cancellationToken = default)
         {
             #region Validation
             if (dto == null) 

@@ -5,7 +5,7 @@ namespace Venue.Application.Services.Review
 {
     public interface IReviewService
     {
-        Task<ResponseBase> CreateAsync(ReviewDto dto, CancellationToken cancellationToken = default);
+        Task<ResponseBase> CreateAsync(CreateReviewDto dto, CancellationToken cancellationToken = default);
 
         Task<PaginatedResponseBase<List<ReviewDto>>> GetAsync(ReviewSearchDto dto, CancellationToken cancellationToken = default);
 

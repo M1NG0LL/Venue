@@ -25,5 +25,8 @@
     <Compile Update="Forms\Registering.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\VenueDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
