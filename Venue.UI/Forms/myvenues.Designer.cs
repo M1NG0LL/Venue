@@ -1,6 +1,6 @@
 ﻿namespace Venue.UI.Forms
 {
-    partial class myvenues
+    partial class MyVenues
     {
         /// <summary>
         /// Required designer variable.
@@ -29,21 +29,27 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            linkLabel5 = new LinkLabel();
+            label5 = new Label();
+            linkLabel3 = new LinkLabel();
+            label4 = new Label();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
             linkLabel1 = new LinkLabel();
             panel2 = new Panel();
+            buttonAddVenue = new Button();
             label6 = new Label();
-            label7 = new Label();
             panel3 = new Panel();
+            buttonNextPage = new Button();
+            buttonPreviousPage = new Button();
+            labelPageInfo = new Label();
             panel14 = new Panel();
             label58 = new Label();
             label51 = new Label();
             label42 = new Label();
             label34 = new Label();
             label26 = new Label();
-            label18 = new Label();
             button15 = new Button();
             button7 = new Button();
             panel19 = new Panel();
@@ -52,11 +58,9 @@
             label45 = new Label();
             label37 = new Label();
             label29 = new Label();
-            label21 = new Label();
             button18 = new Button();
             button10 = new Button();
             label13 = new Label();
-            label12 = new Label();
             label11 = new Label();
             label10 = new Label();
             panel17 = new Panel();
@@ -65,7 +69,6 @@
             label43 = new Label();
             label35 = new Label();
             label27 = new Label();
-            label19 = new Label();
             button16 = new Button();
             button8 = new Button();
             label9 = new Label();
@@ -76,7 +79,6 @@
             label44 = new Label();
             label36 = new Label();
             label28 = new Label();
-            label20 = new Label();
             button17 = new Button();
             button9 = new Button();
             panel13 = new Panel();
@@ -85,7 +87,6 @@
             label40 = new Label();
             label32 = new Label();
             label24 = new Label();
-            label16 = new Label();
             button13 = new Button();
             button5 = new Button();
             panel16 = new Panel();
@@ -94,7 +95,6 @@
             label41 = new Label();
             label33 = new Label();
             label25 = new Label();
-            label17 = new Label();
             button14 = new Button();
             button6 = new Button();
             panel5 = new Panel();
@@ -103,7 +103,6 @@
             label39 = new Label();
             label31 = new Label();
             label23 = new Label();
-            label15 = new Label();
             button12 = new Button();
             button4 = new Button();
             panel4 = new Panel();
@@ -112,13 +111,8 @@
             label38 = new Label();
             label30 = new Label();
             label22 = new Label();
-            label14 = new Label();
             button11 = new Button();
             button3 = new Button();
-            linkLabel5 = new LinkLabel();
-            linkLabel3 = new LinkLabel();
-            label4 = new Label();
-            label5 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -149,6 +143,61 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(196, 810);
             panel1.TabIndex = 2;
+            // 
+            // linkLabel5
+            // 
+            linkLabel5.ActiveLinkColor = Color.IndianRed;
+            linkLabel5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            linkLabel5.ImageAlign = ContentAlignment.TopLeft;
+            linkLabel5.LinkBehavior = LinkBehavior.NeverUnderline;
+            linkLabel5.LinkColor = Color.White;
+            linkLabel5.Location = new Point(-1, 346);
+            linkLabel5.Name = "linkLabel5";
+            linkLabel5.Size = new Size(133, 39);
+            linkLabel5.TabIndex = 9;
+            linkLabel5.TabStop = true;
+            linkLabel5.Text = "👤my profile";
+            linkLabel5.TextAlign = ContentAlignment.TopCenter;
+            linkLabel5.VisitedLinkColor = Color.White;
+            linkLabel5.LinkClicked += linkLabel5_LinkClicked;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.ForeColor = Color.Silver;
+            label5.Location = new Point(3, 308);
+            label5.Name = "label5";
+            label5.Size = new Size(77, 20);
+            label5.TabIndex = 8;
+            label5.Text = "ACCOUNT";
+            // 
+            // linkLabel3
+            // 
+            linkLabel3.ActiveLinkColor = Color.IndianRed;
+            linkLabel3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            linkLabel3.ImageAlign = ContentAlignment.TopLeft;
+            linkLabel3.LinkBehavior = LinkBehavior.NeverUnderline;
+            linkLabel3.LinkColor = Color.White;
+            linkLabel3.Location = new Point(3, 200);
+            linkLabel3.Name = "linkLabel3";
+            linkLabel3.Size = new Size(133, 39);
+            linkLabel3.TabIndex = 6;
+            linkLabel3.TabStop = true;
+            linkLabel3.Text = "🏛️my venues";
+            linkLabel3.TextAlign = ContentAlignment.TopCenter;
+            linkLabel3.VisitedLinkColor = Color.White;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.ForeColor = Color.Silver;
+            label4.Location = new Point(3, 166);
+            label4.Name = "label4";
+            label4.Size = new Size(71, 20);
+            label4.TabIndex = 5;
+            label4.Text = "MANAGE";
             // 
             // label3
             // 
@@ -204,6 +253,7 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(buttonAddVenue);
             panel2.Controls.Add(label6);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(196, 0);
@@ -212,33 +262,36 @@
             panel2.Size = new Size(1048, 86);
             panel2.TabIndex = 3;
             // 
+            // buttonAddVenue
+            // 
+            buttonAddVenue.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonAddVenue.Location = new Point(906, 24);
+            buttonAddVenue.Name = "buttonAddVenue";
+            buttonAddVenue.Size = new Size(120, 32);
+            buttonAddVenue.TabIndex = 1;
+            buttonAddVenue.Text = "Add Venue";
+            buttonAddVenue.UseVisualStyleBackColor = true;
+            buttonAddVenue.Click += buttonAddVenue_Click;
+            // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(37, 27);
+            label6.Location = new Point(0, 24);
             label6.Name = "label6";
-            label6.Size = new Size(131, 29);
+            label6.Size = new Size(187, 29);
             label6.TabIndex = 0;
-            label6.Text = "My Venues";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(233, 106);
-            label7.Name = "label7";
-            label7.Size = new Size(112, 25);
-            label7.TabIndex = 3;
-            label7.Text = "My Venues";
+            label6.Text = "Manage Venues";
             // 
             // panel3
             // 
             panel3.BackColor = Color.White;
+            panel3.Controls.Add(buttonNextPage);
+            panel3.Controls.Add(buttonPreviousPage);
+            panel3.Controls.Add(labelPageInfo);
             panel3.Controls.Add(panel14);
             panel3.Controls.Add(panel19);
             panel3.Controls.Add(label13);
-            panel3.Controls.Add(label12);
             panel3.Controls.Add(label11);
             panel3.Controls.Add(label10);
             panel3.Controls.Add(panel17);
@@ -249,10 +302,44 @@
             panel3.Controls.Add(panel16);
             panel3.Controls.Add(panel5);
             panel3.Controls.Add(panel4);
-            panel3.Location = new Point(221, 132);
+            panel3.Location = new Point(209, 102);
             panel3.Name = "panel3";
             panel3.Size = new Size(1023, 666);
             panel3.TabIndex = 4;
+            // 
+            // buttonNextPage
+            // 
+            buttonNextPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonNextPage.Location = new Point(914, 615);
+            buttonNextPage.Name = "buttonNextPage";
+            buttonNextPage.Size = new Size(94, 29);
+            buttonNextPage.TabIndex = 12;
+            buttonNextPage.Text = "Next";
+            buttonNextPage.UseVisualStyleBackColor = true;
+            buttonNextPage.Click += buttonNextPage_Click;
+            // 
+            // buttonPreviousPage
+            // 
+            buttonPreviousPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonPreviousPage.Location = new Point(814, 615);
+            buttonPreviousPage.Name = "buttonPreviousPage";
+            buttonPreviousPage.Size = new Size(94, 29);
+            buttonPreviousPage.TabIndex = 11;
+            buttonPreviousPage.Text = "Previous";
+            buttonPreviousPage.UseVisualStyleBackColor = true;
+            buttonPreviousPage.Click += buttonPreviousPage_Click;
+            // 
+            // labelPageInfo
+            // 
+            labelPageInfo.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            labelPageInfo.AutoSize = true;
+            labelPageInfo.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelPageInfo.ForeColor = Color.Gray;
+            labelPageInfo.Location = new Point(692, 621);
+            labelPageInfo.Name = "labelPageInfo";
+            labelPageInfo.Size = new Size(83, 18);
+            labelPageInfo.TabIndex = 10;
+            labelPageInfo.Text = "Page 1 of 1";
             // 
             // panel14
             // 
@@ -262,7 +349,6 @@
             panel14.Controls.Add(label42);
             panel14.Controls.Add(label34);
             panel14.Controls.Add(label26);
-            panel14.Controls.Add(label18);
             panel14.Controls.Add(button15);
             panel14.Controls.Add(button7);
             panel14.Location = new Point(0, 303);
@@ -326,21 +412,9 @@
             label26.TabIndex = 10;
             label26.Text = "6000";
             // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.BackColor = Color.FromArgb(192, 255, 192);
-            label18.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label18.ForeColor = Color.FromArgb(0, 64, 0);
-            label18.Location = new Point(754, 17);
-            label18.Name = "label18";
-            label18.Size = new Size(46, 18);
-            label18.TabIndex = 9;
-            label18.Text = "active";
-            // 
             // button15
             // 
-            button15.Location = new Point(868, 17);
+            button15.Location = new Point(790, 17);
             button15.Margin = new Padding(3, 4, 3, 4);
             button15.Name = "button15";
             button15.Size = new Size(43, 29);
@@ -351,12 +425,13 @@
             // button7
             // 
             button7.ForeColor = SystemColors.ControlText;
-            button7.Location = new Point(914, 17);
+            button7.Location = new Point(835, 17);
             button7.Name = "button7";
             button7.Size = new Size(94, 29);
             button7.TabIndex = 6;
-            button7.Text = "Book Now";
+            button7.Text = "Delete";
             button7.UseVisualStyleBackColor = true;
+            button7.Click += DeleteVenue_Click;
             // 
             // panel19
             // 
@@ -366,7 +441,6 @@
             panel19.Controls.Add(label45);
             panel19.Controls.Add(label37);
             panel19.Controls.Add(label29);
-            panel19.Controls.Add(label21);
             panel19.Controls.Add(button18);
             panel19.Controls.Add(button10);
             panel19.Location = new Point(0, 525);
@@ -407,7 +481,6 @@
             label45.Size = new Size(99, 18);
             label45.TabIndex = 12;
             label45.Text = " Nashville, TN";
-            label45.Click += label45_Click;
             // 
             // label37
             // 
@@ -431,21 +504,9 @@
             label29.TabIndex = 10;
             label29.Text = "11000";
             // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.BackColor = Color.FromArgb(192, 255, 192);
-            label21.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label21.ForeColor = Color.FromArgb(0, 64, 0);
-            label21.Location = new Point(754, 14);
-            label21.Name = "label21";
-            label21.Size = new Size(46, 18);
-            label21.TabIndex = 9;
-            label21.Text = "active";
-            // 
             // button18
             // 
-            button18.Location = new Point(868, 14);
+            button18.Location = new Point(790, 14);
             button18.Margin = new Padding(3, 4, 3, 4);
             button18.Name = "button18";
             button18.Size = new Size(43, 29);
@@ -456,34 +517,24 @@
             // button10
             // 
             button10.ForeColor = SystemColors.ControlText;
-            button10.Location = new Point(914, 14);
+            button10.Location = new Point(835, 14);
             button10.Name = "button10";
             button10.Size = new Size(94, 29);
             button10.TabIndex = 6;
-            button10.Text = "Book Now";
+            button10.Text = "Delete";
             button10.UseVisualStyleBackColor = true;
+            button10.Click += DeleteVenue_Click;
             // 
             // label13
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label13.ForeColor = Color.Silver;
-            label13.Location = new Point(917, 8);
+            label13.Location = new Point(839, 8);
             label13.Name = "label13";
             label13.Size = new Size(73, 18);
             label13.TabIndex = 10;
             label13.Text = "ACTIONS";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label12.ForeColor = Color.Silver;
-            label12.Location = new Point(754, 8);
-            label12.Name = "label12";
-            label12.Size = new Size(66, 18);
-            label12.TabIndex = 9;
-            label12.Text = "STATUS";
             // 
             // label11
             // 
@@ -515,7 +566,6 @@
             panel17.Controls.Add(label43);
             panel17.Controls.Add(label35);
             panel17.Controls.Add(label27);
-            panel17.Controls.Add(label19);
             panel17.Controls.Add(button16);
             panel17.Controls.Add(button8);
             panel17.Location = new Point(0, 378);
@@ -579,21 +629,9 @@
             label27.TabIndex = 10;
             label27.Text = "9500";
             // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.BackColor = Color.FromArgb(255, 255, 192);
-            label19.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label19.ForeColor = Color.Olive;
-            label19.Location = new Point(754, 15);
-            label19.Name = "label19";
-            label19.Size = new Size(59, 18);
-            label19.TabIndex = 9;
-            label19.Text = "pending";
-            // 
             // button16
             // 
-            button16.Location = new Point(868, 15);
+            button16.Location = new Point(790, 15);
             button16.Margin = new Padding(3, 4, 3, 4);
             button16.Name = "button16";
             button16.Size = new Size(43, 29);
@@ -604,12 +642,13 @@
             // button8
             // 
             button8.ForeColor = SystemColors.ControlText;
-            button8.Location = new Point(914, 16);
+            button8.Location = new Point(835, 16);
             button8.Name = "button8";
             button8.Size = new Size(94, 29);
             button8.TabIndex = 6;
-            button8.Text = "Book Now";
+            button8.Text = "Delete";
             button8.UseVisualStyleBackColor = true;
+            button8.Click += DeleteVenue_Click;
             // 
             // label9
             // 
@@ -641,7 +680,6 @@
             panel18.Controls.Add(label44);
             panel18.Controls.Add(label36);
             panel18.Controls.Add(label28);
-            panel18.Controls.Add(label20);
             panel18.Controls.Add(button17);
             panel18.Controls.Add(button9);
             panel18.Location = new Point(0, 450);
@@ -705,21 +743,9 @@
             label28.TabIndex = 10;
             label28.Text = "16000";
             // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.BackColor = Color.FromArgb(192, 255, 192);
-            label20.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label20.ForeColor = Color.FromArgb(0, 64, 0);
-            label20.Location = new Point(754, 16);
-            label20.Name = "label20";
-            label20.Size = new Size(46, 18);
-            label20.TabIndex = 9;
-            label20.Text = "active";
-            // 
             // button17
             // 
-            button17.Location = new Point(868, 16);
+            button17.Location = new Point(790, 16);
             button17.Margin = new Padding(3, 4, 3, 4);
             button17.Name = "button17";
             button17.Size = new Size(43, 29);
@@ -730,12 +756,13 @@
             // button9
             // 
             button9.ForeColor = SystemColors.ControlText;
-            button9.Location = new Point(914, 16);
+            button9.Location = new Point(835, 16);
             button9.Name = "button9";
             button9.Size = new Size(94, 29);
             button9.TabIndex = 6;
-            button9.Text = "Book Now";
+            button9.Text = "Delete";
             button9.UseVisualStyleBackColor = true;
+            button9.Click += DeleteVenue_Click;
             // 
             // panel13
             // 
@@ -745,7 +772,6 @@
             panel13.Controls.Add(label40);
             panel13.Controls.Add(label32);
             panel13.Controls.Add(label24);
-            panel13.Controls.Add(label16);
             panel13.Controls.Add(button13);
             panel13.Controls.Add(button5);
             panel13.Location = new Point(0, 160);
@@ -775,7 +801,6 @@
             label49.Size = new Size(143, 18);
             label49.TabIndex = 13;
             label49.Text = " Serenity Gardens";
-            label49.Click += label49_Click;
             // 
             // label40
             // 
@@ -810,21 +835,9 @@
             label24.TabIndex = 10;
             label24.Text = "8500";
             // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.BackColor = Color.FromArgb(192, 255, 192);
-            label16.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label16.ForeColor = Color.FromArgb(0, 64, 0);
-            label16.Location = new Point(754, 14);
-            label16.Name = "label16";
-            label16.Size = new Size(46, 18);
-            label16.TabIndex = 9;
-            label16.Text = "active";
-            // 
             // button13
             // 
-            button13.Location = new Point(868, 14);
+            button13.Location = new Point(790, 14);
             button13.Margin = new Padding(3, 4, 3, 4);
             button13.Name = "button13";
             button13.Size = new Size(43, 29);
@@ -835,12 +848,13 @@
             // button5
             // 
             button5.ForeColor = SystemColors.ControlText;
-            button5.Location = new Point(914, 15);
+            button5.Location = new Point(835, 15);
             button5.Name = "button5";
             button5.Size = new Size(94, 29);
             button5.TabIndex = 6;
-            button5.Text = "Book Now";
+            button5.Text = "Delete";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += DeleteVenue_Click;
             // 
             // panel16
             // 
@@ -850,7 +864,6 @@
             panel16.Controls.Add(label41);
             panel16.Controls.Add(label33);
             panel16.Controls.Add(label25);
-            panel16.Controls.Add(label17);
             panel16.Controls.Add(button14);
             panel16.Controls.Add(button6);
             panel16.Location = new Point(0, 229);
@@ -914,21 +927,9 @@
             label25.TabIndex = 10;
             label25.Text = "14000";
             // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.BackColor = Color.FromArgb(192, 255, 192);
-            label17.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label17.ForeColor = Color.FromArgb(0, 64, 0);
-            label17.Location = new Point(754, 15);
-            label17.Name = "label17";
-            label17.Size = new Size(46, 18);
-            label17.TabIndex = 9;
-            label17.Text = "active";
-            // 
             // button14
             // 
-            button14.Location = new Point(868, 15);
+            button14.Location = new Point(790, 15);
             button14.Margin = new Padding(3, 4, 3, 4);
             button14.Name = "button14";
             button14.Size = new Size(43, 29);
@@ -939,12 +940,13 @@
             // button6
             // 
             button6.ForeColor = SystemColors.ControlText;
-            button6.Location = new Point(914, 15);
+            button6.Location = new Point(835, 15);
             button6.Name = "button6";
             button6.Size = new Size(94, 29);
             button6.TabIndex = 6;
-            button6.Text = "Book Now";
+            button6.Text = "Delete";
             button6.UseVisualStyleBackColor = true;
+            button6.Click += DeleteVenue_Click;
             // 
             // panel5
             // 
@@ -954,7 +956,6 @@
             panel5.Controls.Add(label39);
             panel5.Controls.Add(label31);
             panel5.Controls.Add(label23);
-            panel5.Controls.Add(label15);
             panel5.Controls.Add(button12);
             panel5.Controls.Add(button4);
             panel5.Location = new Point(0, 97);
@@ -1018,21 +1019,9 @@
             label23.TabIndex = 10;
             label23.Text = "18000";
             // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.BackColor = Color.FromArgb(192, 255, 192);
-            label15.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label15.ForeColor = Color.FromArgb(0, 64, 0);
-            label15.Location = new Point(754, 18);
-            label15.Name = "label15";
-            label15.Size = new Size(46, 18);
-            label15.TabIndex = 9;
-            label15.Text = "active";
-            // 
             // button12
             // 
-            button12.Location = new Point(868, 18);
+            button12.Location = new Point(790, 18);
             button12.Margin = new Padding(3, 4, 3, 4);
             button12.Name = "button12";
             button12.Size = new Size(43, 29);
@@ -1043,13 +1032,13 @@
             // button4
             // 
             button4.ForeColor = SystemColors.ControlText;
-            button4.Location = new Point(914, 18);
+            button4.Location = new Point(835, 18);
             button4.Name = "button4";
             button4.Size = new Size(94, 29);
             button4.TabIndex = 6;
-            button4.Text = "Book Now";
+            button4.Text = "Delete";
             button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            button4.Click += DeleteVenue_Click;
             // 
             // panel4
             // 
@@ -1059,7 +1048,6 @@
             panel4.Controls.Add(label38);
             panel4.Controls.Add(label30);
             panel4.Controls.Add(label22);
-            panel4.Controls.Add(label14);
             panel4.Controls.Add(button11);
             panel4.Controls.Add(button3);
             panel4.Location = new Point(0, 34);
@@ -1123,21 +1111,9 @@
             label22.TabIndex = 9;
             label22.Text = "12000";
             // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.BackColor = Color.FromArgb(192, 255, 192);
-            label14.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label14.ForeColor = Color.FromArgb(0, 64, 0);
-            label14.Location = new Point(754, 16);
-            label14.Name = "label14";
-            label14.Size = new Size(46, 18);
-            label14.TabIndex = 8;
-            label14.Text = "active";
-            // 
             // button11
             // 
-            button11.Location = new Point(868, 16);
+            button11.Location = new Point(790, 16);
             button11.Margin = new Padding(3, 4, 3, 4);
             button11.Name = "button11";
             button11.Size = new Size(43, 29);
@@ -1148,79 +1124,24 @@
             // button3
             // 
             button3.ForeColor = SystemColors.ControlText;
-            button3.Location = new Point(917, 16);
+            button3.Location = new Point(835, 16);
             button3.Name = "button3";
             button3.Size = new Size(91, 29);
             button3.TabIndex = 6;
-            button3.Text = "Book Now";
+            button3.Text = "Delete";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += DeleteVenue_Click;
             // 
-            // linkLabel5
-            // 
-            linkLabel5.ActiveLinkColor = Color.IndianRed;
-            linkLabel5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            linkLabel5.ImageAlign = ContentAlignment.TopLeft;
-            linkLabel5.LinkBehavior = LinkBehavior.NeverUnderline;
-            linkLabel5.LinkColor = Color.White;
-            linkLabel5.Location = new Point(-1, 346);
-            linkLabel5.Name = "linkLabel5";
-            linkLabel5.Size = new Size(133, 39);
-            linkLabel5.TabIndex = 9;
-            linkLabel5.TabStop = true;
-            linkLabel5.Text = "👤my profile";
-            linkLabel5.TextAlign = ContentAlignment.TopCenter;
-            linkLabel5.VisitedLinkColor = Color.White;
-            linkLabel5.LinkClicked += linkLabel5_LinkClicked;
-            // 
-            // linkLabel3
-            // 
-            linkLabel3.ActiveLinkColor = Color.IndianRed;
-            linkLabel3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            linkLabel3.ImageAlign = ContentAlignment.TopLeft;
-            linkLabel3.LinkBehavior = LinkBehavior.NeverUnderline;
-            linkLabel3.LinkColor = Color.White;
-            linkLabel3.Location = new Point(3, 200);
-            linkLabel3.Name = "linkLabel3";
-            linkLabel3.Size = new Size(133, 39);
-            linkLabel3.TabIndex = 6;
-            linkLabel3.TabStop = true;
-            linkLabel3.Text = "🏛️my venues";
-            linkLabel3.TextAlign = ContentAlignment.TopCenter;
-            linkLabel3.VisitedLinkColor = Color.White;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Transparent;
-            label4.ForeColor = Color.Silver;
-            label4.Location = new Point(3, 166);
-            label4.Name = "label4";
-            label4.Size = new Size(71, 20);
-            label4.TabIndex = 5;
-            label4.Text = "MANAGE";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.ForeColor = Color.Silver;
-            label5.Location = new Point(3, 308);
-            label5.Name = "label5";
-            label5.Size = new Size(77, 20);
-            label5.TabIndex = 8;
-            label5.Text = "ACCOUNT";
-            // 
-            // myvenues
+            // MyVenues
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SeaShell;
             ClientSize = new Size(1244, 810);
             Controls.Add(panel3);
-            Controls.Add(label7);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Name = "myvenues";
+            Name = "MyVenues";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             panel1.ResumeLayout(false);
@@ -1246,7 +1167,6 @@
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -1257,9 +1177,12 @@
         private Label label1;
         private LinkLabel linkLabel1;
         private Panel panel2;
+        private Button buttonAddVenue;
         private Label label6;
-        private Label label7;
         private Panel panel3;
+        private Button buttonNextPage;
+        private Button buttonPreviousPage;
+        private Label labelPageInfo;
         private Panel panel16;
         private Panel panel5;
         private Panel panel4;
@@ -1271,7 +1194,6 @@
         private Panel panel17;
         private Panel panel19;
         private Label label13;
-        private Label label12;
         private Label label11;
         private Button button5;
         private Button button4;
@@ -1287,13 +1209,6 @@
         private Button button14;
         private Button button12;
         private Button button18;
-        private Label label20;
-        private Label label16;
-        private Label label19;
-        private Label label17;
-        private Label label15;
-        private Label label14;
-        private Label label21;
         private Label label36;
         private Label label28;
         private Label label32;
@@ -1329,7 +1244,6 @@
         private Label label42;
         private Label label34;
         private Label label26;
-        private Label label18;
         private Button button15;
         private Button button7;
         private Label label61;

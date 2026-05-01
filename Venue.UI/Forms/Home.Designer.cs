@@ -1,6 +1,6 @@
-﻿namespace Loginmenu
+﻿namespace Venue.UI.Forms
 {
-    partial class mainscreen
+    partial class Home
     {
         /// <summary>
         /// Required designer variable.

@@ -87,7 +87,7 @@ namespace Venue.UI.Forms
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var myvenues = new myvenues();
+            var myvenues = new MyVenues();
             myvenues.Show();
             this.Hide();
         }
@@ -125,7 +125,7 @@ namespace Venue.UI.Forms
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var homepage = new mainscreen();
+            var homepage = new Home();
             homepage.Show();
             this.Hide();
         }

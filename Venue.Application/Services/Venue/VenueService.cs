@@ -87,6 +87,40 @@ namespace Venue.Application.Services.Venue
             return ResponseBase<VenueDto>.Success(dto);
         }
 
+        public async Task<PaginatedResponseBase<List<BasicOwnerVenueDto>>> GetMyVenuesAsync(VenueSearchDto dto, CancellationToken cancellationToken = default)
+        {
+            var venueQuery = _repository.Get(x => x.CreatedById == _userId);
+
+            if (!string.IsNullOrEmpty(dto.SearchText))
+                venueQuery = venueQuery.Where(x => (string.IsNullOrEmpty(dto.SearchText) ||
+                    x.Name.Contains(dto.SearchText) ||
+                    x.Description.Contains(dto.SearchText)
+                ));
+
+            if (dto.SortByType == SortByType.Ascending)
+                venueQuery = venueQuery.OrderBy(v => v.CreatedAt);
+            else if (dto.SortByType == SortByType.Descending)
+                venueQuery = venueQuery.OrderByDescending(v => v.CreatedAt);
+
+            var pagedVenues = await _pagination.PagedResultAsync(venueQuery, dto.PageNumber, dto.PageSize, cancellationToken);
+
+            return PaginatedResponseBase<List<BasicOwnerVenueDto>>.Success(
+                pageNumber: dto.PageNumber,
+                pageSize: dto.PageSize,
+                data: pagedVenues.Data.Select(x => new BasicOwnerVenueDto()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Description = x.Description,
+                    Address = x.ContactInfo.Address ?? "N/A",
+                    PricePerEvent = x.Info.PricePerEvent,
+                    SeatingCapacity = x.Info.SeatingCapacity,
+                }).ToList(),
+                totalCount: pagedVenues.TotalRecords,
+                message: "Owner venues retrieved successfully."
+            );
+        }
+
         public async Task<PaginatedResponseBase<List<BasicVenueDto>>> GetFeaturedVenuesAsync(VenueSearchDto dto, CancellationToken cancellationToken = default)
         {
             var venueQuery = _repository.GetQuery()

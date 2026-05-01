@@ -179,7 +179,7 @@ namespace Venue.UI.Forms
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var mainScreenForm = new mainscreen();
+            var mainScreenForm = new Home();
             mainScreenForm.Show();
             this.Hide();
         }

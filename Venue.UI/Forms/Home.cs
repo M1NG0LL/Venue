@@ -6,14 +6,14 @@ using Venue.UI;
 using Venue.UI.Forms;
 using Venue.UI.Helpers;
 
-namespace Loginmenu
+namespace Venue.UI.Forms
 {
-    public partial class mainscreen : Form
+    public partial class Home : Form
     {
         private readonly IVenueService _venueService;
         private readonly ICurrentUserService _currentUserService;
 
-        public mainscreen()
+        public Home()
         {
             InitializeComponent();
             _venueService = Program.Services.GetService<IVenueService>() ?? throw new Exception("Venue service not configured");
@@ -149,7 +149,7 @@ namespace Loginmenu
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var myvenues = new myvenues();
+            var myvenues = new MyVenues();
             myvenues.Show();
             this.Hide();
         }

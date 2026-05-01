@@ -123,6 +123,7 @@ namespace Venue.Infrastructure.Seeder
             {
                 new VenueEntity
                 {
+                    CreatedById = ownerId,
                     Name = "Grand Hall",
                     Description = "A spacious venue for large events.",
                     ImagePath = "https://unsplash.com/photos/white-folding-chair-in-front-of-body-of-water-jTnipV64uLo",
@@ -143,6 +144,7 @@ namespace Venue.Infrastructure.Seeder
 
                 new VenueEntity
                 {
+                    CreatedById = ownerId,
                     Name = "Cozy Corner",
                     Description = "A small, intimate venue for private gatherings.",
                     ImagePath = "https://unsplash.com/photos/a-large-room-with-tables-and-chairs-in-it-neAMdikyhEQ",
@@ -163,6 +165,7 @@ namespace Venue.Infrastructure.Seeder
 
                 new VenueEntity
                 {
+                    CreatedById = ownerId,
                     Name = "Skyline Rooftop",
                     Description = "Rooftop venue with city skyline view.",
                     ImagePath = "https://unsplash.com/photos/a-large-room-with-tables-and-chairs-in-it-neAMdikyhEQ",
@@ -183,6 +186,7 @@ namespace Venue.Infrastructure.Seeder
 
                 new VenueEntity
                 {
+                    CreatedById = ownerId,
                     Name = "Garden Bliss",
                     Description = "Outdoor garden venue surrounded by greenery.",
                     ImagePath = "https://unsplash.com/photos/a-courtyard-with-white-flowers-aRQrz0fclB8",
@@ -203,6 +207,7 @@ namespace Venue.Infrastructure.Seeder
 
                 new VenueEntity
                 {
+                    CreatedById = ownerId,
                     Name = "Crystal Ballroom",
                     Description = "Elegant ballroom for weddings and formal events.",
                     ImagePath = "https://unsplash.com/photos/a-courtyard-with-white-flowers-aRQrz0fclB8",
@@ -223,6 +228,7 @@ namespace Venue.Infrastructure.Seeder
 
                 new VenueEntity
                 {
+                    CreatedById = ownerId,
                     Name = "Studio Loft",
                     Description = "Modern industrial-style venue for creative events.",
                     ImagePath = "https://unsplash.com/photos/white-folding-chair-in-front-of-body-of-water-jTnipV64uLo",

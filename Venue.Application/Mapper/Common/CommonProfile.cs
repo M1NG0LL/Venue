@@ -10,7 +10,8 @@ namespace Venue.Application.Mapper.Common
         {
             CreateMap<Point, LocationDto>()
                 .ForMember(dest => dest.X, opt => opt.MapFrom(src => src.X))
-                .ForMember(dest => dest.Y, opt => opt.MapFrom(src => src.Y));
+                .ForMember(dest => dest.Y, opt => opt.MapFrom(src => src.Y))
+                .ReverseMap();
         }
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Venue.Infrastructure;
 using Venue.Infrastructure.DbContext;
 using Venue.Infrastructure.Seeder;
+using Venue.UI.Forms;
 
 namespace Venue.UI
 {
@@ -33,7 +34,7 @@ namespace Venue.UI
 
             #region UI Forms
             services.AddTransient<Login_menu>();
-            services.AddTransient<mainscreen>();
+            services.AddTransient<Home>();
             services.AddTransient<Registering>();
             #endregion
 

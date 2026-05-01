@@ -38,12 +38,12 @@ namespace Venue.Infrastructure.DbContext
                     if (entity.State == EntityState.Added)
                     {
                         baseEntity.CreatedAt = now;
-                        baseEntity.CreatedById = userId;
+                        baseEntity.CreatedById ??= userId;
                     }
                     else if (entity.State == EntityState.Modified)
                     {
                         baseEntity.UpdatedAt = now;
-                        baseEntity.UpdatedById = userId;
+                        baseEntity.UpdatedById ??= userId;
                     }
                 }
             }

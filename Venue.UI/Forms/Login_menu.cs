@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Venue.Application.Services.Account;
 using Venue.UI;
+using Venue.UI.Forms;
 
 namespace Loginmenu
 {
@@ -60,7 +61,7 @@ namespace Loginmenu
                 return;
             }
 
-            var mainScreenForm = new mainscreen();
+            var mainScreenForm = new Home();
             mainScreenForm.Show();
 
             this.Hide();
