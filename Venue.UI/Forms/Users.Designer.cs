@@ -41,6 +41,9 @@
             buttonAddOwner = new Button();
             label6 = new Label();
             panel3 = new Panel();
+            buttonNextPage = new Button();
+            buttonPreviousPage = new Button();
+            labelPageInfo = new Label();
             panel5 = new Panel();
             label48 = new Label();
             label39 = new Label();
@@ -252,6 +255,9 @@
             // panel3
             // 
             panel3.BackColor = Color.White;
+            panel3.Controls.Add(buttonNextPage);
+            panel3.Controls.Add(buttonPreviousPage);
+            panel3.Controls.Add(labelPageInfo);
             panel3.Controls.Add(panel5);
             panel3.Controls.Add(panel19);
             panel3.Controls.Add(label13);
@@ -268,6 +274,40 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(1048, 722);
             panel3.TabIndex = 5;
+            // 
+            // buttonNextPage
+            // 
+            buttonNextPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonNextPage.Location = new Point(914, 671);
+            buttonNextPage.Name = "buttonNextPage";
+            buttonNextPage.Size = new Size(94, 29);
+            buttonNextPage.TabIndex = 12;
+            buttonNextPage.Text = "Next";
+            buttonNextPage.UseVisualStyleBackColor = true;
+            buttonNextPage.Click += buttonNextPage_Click;
+            // 
+            // buttonPreviousPage
+            // 
+            buttonPreviousPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonPreviousPage.Location = new Point(814, 671);
+            buttonPreviousPage.Name = "buttonPreviousPage";
+            buttonPreviousPage.Size = new Size(94, 29);
+            buttonPreviousPage.TabIndex = 11;
+            buttonPreviousPage.Text = "Previous";
+            buttonPreviousPage.UseVisualStyleBackColor = true;
+            buttonPreviousPage.Click += buttonPreviousPage_Click;
+            // 
+            // labelPageInfo
+            // 
+            labelPageInfo.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            labelPageInfo.AutoSize = true;
+            labelPageInfo.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelPageInfo.ForeColor = Color.Gray;
+            labelPageInfo.Location = new Point(692, 677);
+            labelPageInfo.Name = "labelPageInfo";
+            labelPageInfo.Size = new Size(88, 18);
+            labelPageInfo.TabIndex = 10;
+            labelPageInfo.Text = "Page 1 of 1";
             // 
             // panel5
             // 
@@ -761,6 +801,9 @@
         private Button buttonAddOwner;
         private Label label6;
         private Panel panel3;
+        private Button buttonNextPage;
+        private Button buttonPreviousPage;
+        private Label labelPageInfo;
         private Panel panel19;
         private Label label54;
         private Label label45;

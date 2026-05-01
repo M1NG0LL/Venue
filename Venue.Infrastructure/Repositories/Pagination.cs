@@ -30,7 +30,7 @@ namespace Venue.Infrastructure.Repositories
             var skipValue = Math.Max((pageNumber - 1) * pageSize, 0);
 
             var data = await query.Skip(skipValue).Take(pageSize).ToListAsync(cancellationToken);
-            var count = data.Count;
+            var count = await query.CountAsync(cancellationToken);
 
             var result = new PagedData<T>
             {

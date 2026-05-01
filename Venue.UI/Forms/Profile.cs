@@ -139,7 +139,7 @@ namespace Venue.UI.Forms
                 return;
             }
 
-            var loginForm = new Login();
+            var loginForm = new Login_menu();
             loginForm.ShowDialog();
             this.Hide();
         }

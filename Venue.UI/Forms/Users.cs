@@ -8,8 +8,11 @@ namespace Venue.UI.Forms
 {
     public partial class Users : Form
     {
+        private const int PageSize = 7;
         private readonly IAdminService _adminService;
         private readonly ICurrentUserService _currentUserService;
+        private int _currentPage = 1;
+        private int _totalPages = 1;
 
         public Users()
         {
@@ -45,8 +48,8 @@ namespace Venue.UI.Forms
             var usersResponse = await _adminService.GetUsersAsync(new Application.Dtos.Admin.AdminSearchDto()
             {
                 SortByType = Application.Common.SortByType.Descending,
-                PageNumber = 1,
-                PageSize = 7
+                PageNumber = _currentPage,
+                PageSize = PageSize
             });
 
             if (!usersResponse.IsSuccess)
@@ -55,6 +58,15 @@ namespace Venue.UI.Forms
                 return;
             }
 
+            var totalPages = Math.Max(usersResponse.TotalPages, 1);
+            if (_currentPage > totalPages)
+            {
+                _currentPage = totalPages;
+                await LoadUsersAsync();
+                return;
+            }
+
+            _totalPages = totalPages;
             var users = usersResponse.Data?.Users ?? new List<Application.Dtos.Admin.AdminUserDto>();
             var rows = GetUserRows();
 
@@ -75,6 +87,8 @@ namespace Venue.UI.Forms
                 rows[i].Delete.Click -= DeleteButton_Click!;
                 rows[i].Delete.Click += DeleteButton_Click!;
             }
+
+            UpdatePaginationControls();
         }
 
         private void ClearUsers()
@@ -87,6 +101,13 @@ namespace Venue.UI.Forms
                 row.Joined.Text = string.Empty;
                 row.Delete.Tag = null;
             }
+        }
+
+        private void UpdatePaginationControls()
+        {
+            labelPageInfo.Text = $"Page {_currentPage} of {_totalPages}";
+            buttonPreviousPage.Enabled = _currentPage > 1;
+            buttonNextPage.Enabled = _currentPage < _totalPages;
         }
 
         private (Panel Panel, Label Name, Label Email, Label Joined, Button Delete)[] GetUserRows()
@@ -109,6 +130,28 @@ namespace Venue.UI.Forms
             {
                 DeleteUser(userId);
             }
+        }
+
+        private async void buttonPreviousPage_Click(object sender, EventArgs e)
+        {
+            if (_currentPage <= 1)
+            {
+                return;
+            }
+
+            _currentPage--;
+            await LoadUsersAsync();
+        }
+
+        private async void buttonNextPage_Click(object sender, EventArgs e)
+        {
+            if (_currentPage >= _totalPages)
+            {
+                return;
+            }
+
+            _currentPage++;
+            await LoadUsersAsync();
         }
 
         private async void buttonAddOwner_Click(object sender, EventArgs e)
