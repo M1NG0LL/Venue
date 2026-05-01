@@ -38,7 +38,6 @@
             label1 = new Label();
             linkLabel1 = new LinkLabel();
             panel2 = new Panel();
-            buttonAddVenue = new Button();
             label6 = new Label();
             panel3 = new Panel();
             buttonNextPage = new Button();
@@ -253,7 +252,6 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
-            panel2.Controls.Add(buttonAddVenue);
             panel2.Controls.Add(label6);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(196, 0);
@@ -261,17 +259,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1048, 86);
             panel2.TabIndex = 3;
-            // 
-            // buttonAddVenue
-            // 
-            buttonAddVenue.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonAddVenue.Location = new Point(906, 24);
-            buttonAddVenue.Name = "buttonAddVenue";
-            buttonAddVenue.Size = new Size(120, 32);
-            buttonAddVenue.TabIndex = 1;
-            buttonAddVenue.Text = "Add Venue";
-            buttonAddVenue.UseVisualStyleBackColor = true;
-            buttonAddVenue.Click += buttonAddVenue_Click;
             // 
             // label6
             // 
@@ -419,8 +406,9 @@
             button15.Name = "button15";
             button15.Size = new Size(43, 29);
             button15.TabIndex = 8;
-            button15.Text = "edit";
+            button15.Text = "Edit";
             button15.UseVisualStyleBackColor = true;
+            button15.Click += EditVenue_Click;
             // 
             // button7
             // 
@@ -511,8 +499,9 @@
             button18.Name = "button18";
             button18.Size = new Size(43, 29);
             button18.TabIndex = 8;
-            button18.Text = "edit";
+            button18.Text = "Edit";
             button18.UseVisualStyleBackColor = true;
+            button18.Click += EditVenue_Click;
             // 
             // button10
             // 
@@ -636,8 +625,9 @@
             button16.Name = "button16";
             button16.Size = new Size(43, 29);
             button16.TabIndex = 8;
-            button16.Text = "edit";
+            button16.Text = "Edit";
             button16.UseVisualStyleBackColor = true;
+            button16.Click += EditVenue_Click;
             // 
             // button8
             // 
@@ -750,8 +740,9 @@
             button17.Name = "button17";
             button17.Size = new Size(43, 29);
             button17.TabIndex = 8;
-            button17.Text = "edit";
+            button17.Text = "Edit";
             button17.UseVisualStyleBackColor = true;
+            button17.Click += EditVenue_Click;
             // 
             // button9
             // 
@@ -842,8 +833,9 @@
             button13.Name = "button13";
             button13.Size = new Size(43, 29);
             button13.TabIndex = 8;
-            button13.Text = "edit";
+            button13.Text = "Edit";
             button13.UseVisualStyleBackColor = true;
+            button13.Click += EditVenue_Click;
             // 
             // button5
             // 
@@ -934,8 +926,9 @@
             button14.Name = "button14";
             button14.Size = new Size(43, 29);
             button14.TabIndex = 8;
-            button14.Text = "edit";
+            button14.Text = "Edit";
             button14.UseVisualStyleBackColor = true;
+            button14.Click += EditVenue_Click;
             // 
             // button6
             // 
@@ -1026,8 +1019,9 @@
             button12.Name = "button12";
             button12.Size = new Size(43, 29);
             button12.TabIndex = 8;
-            button12.Text = "edit";
+            button12.Text = "Edit";
             button12.UseVisualStyleBackColor = true;
+            button12.Click += EditVenue_Click;
             // 
             // button4
             // 
@@ -1118,8 +1112,9 @@
             button11.Name = "button11";
             button11.Size = new Size(43, 29);
             button11.TabIndex = 7;
-            button11.Text = "edit";
+            button11.Text = "Edit";
             button11.UseVisualStyleBackColor = true;
+            button11.Click += EditVenue_Click;
             // 
             // button3
             // 
@@ -1177,7 +1172,6 @@
         private Label label1;
         private LinkLabel linkLabel1;
         private Panel panel2;
-        private Button buttonAddVenue;
         private Label label6;
         private Panel panel3;
         private Button buttonNextPage;

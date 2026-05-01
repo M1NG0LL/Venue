@@ -38,7 +38,7 @@ namespace Venue.UI.Forms
             }
         }
 
-        public async void LoadData(object sender, EventArgs e)
+        private async void LoadData(object sender, EventArgs e)
         {
             await LoadDataAsync();
         }
@@ -80,14 +80,14 @@ namespace Venue.UI.Forms
             var panels = new[] { panel4, panel5, panel13, panel14, panel16, panel17, panel18, panel19 };
             var venuePanels = new[]
             {
-                new { Panel = panel4, NameLabel = label46, DescLabel = label47, LocationLabel = label38, CapacityLabel = label30, PriceLabel = label22, DeleteButton = button3 },
-                new { Panel = panel5, NameLabel = label48, DescLabel = label55, LocationLabel = label39, CapacityLabel = label31, PriceLabel = label23, DeleteButton = button4 },
-                new { Panel = panel13, NameLabel = label49, DescLabel = label56, LocationLabel = label40, CapacityLabel = label32, PriceLabel = label24, DeleteButton = button5 },
-                new { Panel = panel14, NameLabel = label51, DescLabel = label58, LocationLabel = label42, CapacityLabel = label34, PriceLabel = label26, DeleteButton = button7 },
-                new { Panel = panel16, NameLabel = label50, DescLabel = label57, LocationLabel = label41, CapacityLabel = label33, PriceLabel = label25, DeleteButton = button6 },
-                new { Panel = panel17, NameLabel = label52, DescLabel = label59, LocationLabel = label43, CapacityLabel = label35, PriceLabel = label27, DeleteButton = button8 },
-                new { Panel = panel18, NameLabel = label53, DescLabel = label60, LocationLabel = label44, CapacityLabel = label36, PriceLabel = label28, DeleteButton = button9 },
-                new { Panel = panel19, NameLabel = label54, DescLabel = label61, LocationLabel = label45, CapacityLabel = label37, PriceLabel = label29, DeleteButton = button10 }
+                new { Panel = panel4, NameLabel = label46, DescLabel = label47, LocationLabel = label38, CapacityLabel = label30, PriceLabel = label22, EditButton = button11, DeleteButton = button3 },
+                new { Panel = panel5, NameLabel = label48, DescLabel = label55, LocationLabel = label39, CapacityLabel = label31, PriceLabel = label23, EditButton = button12, DeleteButton = button4 },
+                new { Panel = panel13, NameLabel = label49, DescLabel = label56, LocationLabel = label40, CapacityLabel = label32, PriceLabel = label24, EditButton = button13, DeleteButton = button5 },
+                new { Panel = panel14, NameLabel = label51, DescLabel = label58, LocationLabel = label42, CapacityLabel = label34, PriceLabel = label26, EditButton = button15, DeleteButton = button7 },
+                new { Panel = panel16, NameLabel = label50, DescLabel = label57, LocationLabel = label41, CapacityLabel = label33, PriceLabel = label25, EditButton = button14, DeleteButton = button6 },
+                new { Panel = panel17, NameLabel = label52, DescLabel = label59, LocationLabel = label43, CapacityLabel = label35, PriceLabel = label27, EditButton = button16, DeleteButton = button8 },
+                new { Panel = panel18, NameLabel = label53, DescLabel = label60, LocationLabel = label44, CapacityLabel = label36, PriceLabel = label28, EditButton = button17, DeleteButton = button9 },
+                new { Panel = panel19, NameLabel = label54, DescLabel = label61, LocationLabel = label45, CapacityLabel = label37, PriceLabel = label29, EditButton = button18, DeleteButton = button10 }
             };
 
             for (int i = 0; i < venues.Count && i < venuePanels.Length; i++)
@@ -100,6 +100,7 @@ namespace Venue.UI.Forms
                 venuePanel.LocationLabel.Text = $" {TruncateText(venue.Address, LocationLimit)}";
                 venuePanel.CapacityLabel.Text = venue.SeatingCapacity.ToString();
                 venuePanel.PriceLabel.Text = venue.PricePerEvent.ToString();
+                venuePanel.EditButton.Tag = venue.Id;
                 venuePanel.DeleteButton.Tag = venue.Id;
 
                 venuePanel.Panel.Visible = true;
@@ -143,18 +144,30 @@ namespace Venue.UI.Forms
         private async void EditVenue_Click(object sender, EventArgs e)
         {
             if (sender is not Button button || button.Tag is not Guid venueId)
-            {
                 return;
-            }
+            
+            var venueDtoResponse = await _venueService.GetByIdAsync(venueId);
+            if (!venueDtoResponse.IsSuccess)
+                ErrorShower.ShowError(venueDtoResponse);
 
-            using var addVenueForm = new AddVenueForm();
+            using var addVenueForm = new AddVenueForm(venueDtoResponse.Data);
 
-            if (addVenueForm.ShowDialog(this) != DialogResult.OK || addVenueForm.VenueDto == null)
-            {
+            if (addVenueForm.ShowDialog(this) != DialogResult.OK || addVenueForm.NewVenueDto == null)
                 return;
-            }
+            
+            var dto = new UpdateVenueDto()
+            {
+                Id = venueId,
 
-            var result = await _venueService.CreateAsync(addVenueForm.VenueDto);
+                Name  = addVenueForm.NewVenueDto.Name,
+                Description = addVenueForm.NewVenueDto.Description,
+                ImagePath = addVenueForm.NewVenueDto.ImagePath,
+
+                ContactInfo = addVenueForm.NewVenueDto.ContactInfo,
+                Info = addVenueForm.NewVenueDto.Info,
+            };
+
+            var result = await _venueService.UpdateAsync(dto);
 
             if (!result.IsSuccess)
             {
@@ -191,12 +204,12 @@ namespace Venue.UI.Forms
         {
             using var addVenueForm = new AddVenueForm();
 
-            if (addVenueForm.ShowDialog(this) != DialogResult.OK || addVenueForm.VenueDto == null)
+            if (addVenueForm.ShowDialog(this) != DialogResult.OK || addVenueForm.NewVenueDto == null)
             {
                 return;
             }
 
-            var result = await _venueService.CreateAsync(addVenueForm.VenueDto);
+            var result = await _venueService.CreateAsync(addVenueForm.NewVenueDto);
 
             if (!result.IsSuccess)
             {

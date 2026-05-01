@@ -15,6 +15,7 @@ namespace Venue.Infrastructure
         public static IServiceCollection AddInfrastructureScopes(this IServiceCollection services, IConfiguration configuration)
         {
             #region Singleton Services
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddSingleton<IPagination, Pagination>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             #endregion
@@ -27,7 +28,6 @@ namespace Venue.Infrastructure
 
             #region Scoped Services
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             #endregion
 

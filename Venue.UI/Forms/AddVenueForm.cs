@@ -8,11 +8,18 @@ namespace Venue.UI.Forms
 {
     public sealed partial class AddVenueForm : Form
     {
-        public CreateVenueDto? VenueDto { get; private set; }
+        public CreateVenueDto? NewVenueDto { get; private set; }
+        private VenueDto? _venueDto { get; set; }
 
-        public AddVenueForm()
+        public AddVenueForm(VenueDto? oldVenueDto = null)
         {
             InitializeComponent();
+
+            if (oldVenueDto != null)
+            {
+                _venueDto = oldVenueDto;
+                PopulateFields();
+            }
         }
 
         private void CancelButton_Click(object? sender, EventArgs e)
@@ -27,7 +34,7 @@ namespace Venue.UI.Forms
                 return;
             }
 
-            VenueDto = dto;
+            NewVenueDto = dto;
             DialogResult = DialogResult.OK;
         }
 
@@ -94,6 +101,37 @@ namespace Venue.UI.Forms
             };
 
             return true;
+        }
+
+        private void PopulateFields()
+        {
+            if (_venueDto == null)
+                return;
+
+            labelTitle.Text = "Edit Venue";
+            createButton.Text = "Update";
+
+            nameTextBox.Text = _venueDto.Name;
+            descriptionTextBox.Text = _venueDto.Description;
+
+            phoneTextBox.Text = _venueDto.ContactInfo.Phone;
+            emailTextBox.Text = _venueDto.ContactInfo.Email;
+            addressTextBox.Text = _venueDto.ContactInfo.Address ?? string.Empty;
+
+            locationXInput.Value = (decimal)_venueDto.ContactInfo.Location.X;
+            locationYInput.Value = (decimal)_venueDto.ContactInfo.Location.Y;
+            capacityInput.Value = _venueDto.Info.SeatingCapacity;
+
+            priceInput.Value = _venueDto.Info.PricePerEvent;
+
+            foreach (var day in _venueDto.Info.AvailableDays)
+            {
+                var index = availableDays.Items.IndexOf(day.ToString());
+                if (index >= 0)
+                {
+                    availableDays.SetItemChecked(index, true);
+                }
+            }
         }
     }
 }
