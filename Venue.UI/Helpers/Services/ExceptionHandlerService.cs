@@ -43,12 +43,15 @@ namespace Venue.UI
             var result = MessageBox.Show(
                 message.ToString(),
                 "Unexpected Error",
-                MessageBoxButtons.YesNo,
+                MessageBoxButtons.RetryCancel,
                 MessageBoxIcon.Error,
                 MessageBoxDefaultButton.Button1);
 
-            if (result == DialogResult.No)
+            if (result == DialogResult.Cancel)
+            {
                 App.Exit();
+                Environment.Exit(1);
+            }
         }
     }
 }
