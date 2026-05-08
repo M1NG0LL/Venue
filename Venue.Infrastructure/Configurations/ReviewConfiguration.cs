@@ -25,6 +25,11 @@ namespace Venue.Infrastructure.Configurations
                 .WithMany(x => x.Reviews)
                 .HasForeignKey(x => x.VenueId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(v => v.CreatedBy)
+                .WithMany()
+                .HasForeignKey(v => v.CreatedById)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

@@ -63,6 +63,11 @@ namespace Venue.Infrastructure.Configurations
                 .WithOne(r => r.Venue)
                 .HasForeignKey(r => r.VenueId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(v => v.CreatedBy)
+                .WithMany()
+                .HasForeignKey(v => v.CreatedById)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
