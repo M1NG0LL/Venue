@@ -112,6 +112,7 @@
             label22 = new Label();
             button11 = new Button();
             button3 = new Button();
+            buttonAddVenue = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -252,6 +253,7 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(buttonAddVenue);
             panel2.Controls.Add(label6);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(196, 0);
@@ -1127,6 +1129,17 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += DeleteVenue_Click;
             // 
+            // buttonAddOwner
+            // 
+            buttonAddVenue.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonAddVenue.Location = new Point(913, 25);
+            buttonAddVenue.Name = "buttonAddOwner";
+            buttonAddVenue.Size = new Size(120, 32);
+            buttonAddVenue.TabIndex = 2;
+            buttonAddVenue.Text = "Add Venue";
+            buttonAddVenue.UseVisualStyleBackColor = true;
+            buttonAddVenue.Click += buttonAddVenue_Click;
+            // 
             // MyVenues
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -1250,5 +1263,6 @@
         private Label label5;
         private LinkLabel linkLabel3;
         private Label label4;
+        private Button buttonAddVenue;
     }
 }

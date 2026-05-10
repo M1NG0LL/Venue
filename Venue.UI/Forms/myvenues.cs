@@ -83,8 +83,8 @@ namespace Venue.UI.Forms
                 new { Panel = panel4, NameLabel = label46, DescLabel = label47, LocationLabel = label38, CapacityLabel = label30, PriceLabel = label22, EditButton = button11, DeleteButton = button3 },
                 new { Panel = panel5, NameLabel = label48, DescLabel = label55, LocationLabel = label39, CapacityLabel = label31, PriceLabel = label23, EditButton = button12, DeleteButton = button4 },
                 new { Panel = panel13, NameLabel = label49, DescLabel = label56, LocationLabel = label40, CapacityLabel = label32, PriceLabel = label24, EditButton = button13, DeleteButton = button5 },
-                new { Panel = panel14, NameLabel = label51, DescLabel = label58, LocationLabel = label42, CapacityLabel = label34, PriceLabel = label26, EditButton = button15, DeleteButton = button7 },
                 new { Panel = panel16, NameLabel = label50, DescLabel = label57, LocationLabel = label41, CapacityLabel = label33, PriceLabel = label25, EditButton = button14, DeleteButton = button6 },
+                new { Panel = panel14, NameLabel = label51, DescLabel = label58, LocationLabel = label42, CapacityLabel = label34, PriceLabel = label26, EditButton = button15, DeleteButton = button7 },
                 new { Panel = panel17, NameLabel = label52, DescLabel = label59, LocationLabel = label43, CapacityLabel = label35, PriceLabel = label27, EditButton = button16, DeleteButton = button8 },
                 new { Panel = panel18, NameLabel = label53, DescLabel = label60, LocationLabel = label44, CapacityLabel = label36, PriceLabel = label28, EditButton = button17, DeleteButton = button9 },
                 new { Panel = panel19, NameLabel = label54, DescLabel = label61, LocationLabel = label45, CapacityLabel = label37, PriceLabel = label29, EditButton = button18, DeleteButton = button10 }
